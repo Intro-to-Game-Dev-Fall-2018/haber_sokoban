@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gameState : MonoBehaviour {
+public class GameState : ScriptableObject
+{
+    public int moves;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    public void reset()
+    {
+        moves = 0;
+    }
 }

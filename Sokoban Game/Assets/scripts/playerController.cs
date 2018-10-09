@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerController : ScriptableObject
+public class playerController : MonoBehaviour
 {
-	public int moves;
-
-
-	public void reset()
+	private void Start()
 	{
-		moves = 0;
+		
+	}
+
+
+	private void Update()
+	{
+		if (Input.GetButton("Up"))
+		{
+			
+		}
 	}
 }
