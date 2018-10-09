@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
 	public static GameManager Instance = null;
 	public static GameState State;
+	public GameSettings Settings;
 	
 	[SerializeField] private LevelManager _level;
 	
@@ -22,9 +23,4 @@ public class GameManager : MonoBehaviour
 		State = ScriptableObject.CreateInstance<GameState>();
 	}
 
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

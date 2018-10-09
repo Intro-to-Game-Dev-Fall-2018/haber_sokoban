@@ -10,6 +10,7 @@ public class MovingObject : MonoBehaviour
 	private Rigidbody2D _rb2d;
 	private float inverseMoveTime;
 	private bool canMove;
+	private Vector2 _lastPos;
 	
 	private void Awake ()
 	{
@@ -18,14 +19,23 @@ public class MovingObject : MonoBehaviour
 		canMove = true;
 	}
 
-	public bool move(int x,int y)
+	public bool move(Vector2 newPosition)
 	{
 		if (!canMove) return false;
-		
-		_rb2d.MovePosition(new Vector2(_rb2d.position.x+x,_rb2d.position.y+y));
+
+		_lastPos = _rb2d.position;
+		_rb2d.MovePosition(_rb2d.position + newPosition);
 		StartCoroutine(moveTimer());
 		
 		return true;
+	}
+
+	private void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.gameObject.CompareTag("Wall"))
+		{
+			_rb2d.position = _lastPos;
+		}	
 	}
 
 	private IEnumerator moveTimer()

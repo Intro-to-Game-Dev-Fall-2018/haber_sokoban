@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
 	private void move(int x,int y)
 	{
-		if (_motor.move(x, y))
+		if (_motor.move(new Vector2(x,y)))
 			GameManager.State.moves++;
 	}
 
