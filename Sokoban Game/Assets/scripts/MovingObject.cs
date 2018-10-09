@@ -9,17 +9,30 @@ public class MovingObject : MonoBehaviour
 
 	private Rigidbody2D _rb2d;
 	private float inverseMoveTime;
+	private bool canMove;
 	
-	private void Start ()
+	private void Awake ()
 	{
 		_rb2d = GetComponent<Rigidbody2D>();
 		inverseMoveTime = 1f / .5f;
+		canMove = true;
 	}
 
 	public bool move(int x,int y)
 	{
-		_rb2d.MovePosition(_rb2d.position+new Vector2(x,y));
+		if (!canMove) return false;
+		
+		_rb2d.MovePosition(new Vector2(_rb2d.position.x+x,_rb2d.position.y+y));
+		StartCoroutine(moveTimer());
+		
 		return true;
+	}
+
+	private IEnumerator moveTimer()
+	{
+		canMove = false;
+		yield return new WaitForSeconds(1f);
+		canMove = true;
 	}
 
 	private IEnumerator moveRoutine(Vector3 end)

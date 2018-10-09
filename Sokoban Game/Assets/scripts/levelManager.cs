@@ -16,29 +16,36 @@ public class LevelManager : MonoBehaviour
     private string[] _levels;
     private int currentLevel;
 
-    public void nextLevel()
+    public void resetLevel()
     {
-        if (currentLevel >= _levels.Length) return;
-
-        foreach (Transform child in transform) {
-            Destroy(child.gameObject);
-        }
-        
-        loadLevel();
+        loadLevel(currentLevel);
     }
     
-    private void loadLevel()
+    public void nextLevel()
     {
-        var lines = _levels[currentLevel++].Split('\n');
+        if (currentLevel++ >= _levels.Length) return;
+        loadLevel(currentLevel);
+    }
+    
+    private void loadLevel(int level)
+    {
+        foreach (Transform child in transform) 
+            Destroy(child.gameObject);
+        
+        var lines = _levels[level].Split('\n');
+        var numPackages = 0;
         
         for (var i = 0; i < lines.Length; i++)
         {
-            if (lines[i].StartsWith(";")) continue;
+            if (lines[i].StartsWith(";"))
+            {
+                GameManager.State.levelName = lines[i].Replace("; ","");
+                continue;
+            }
             for (var j = 0; j < lines[i].Length; j++)
             {
                 var pos = new Vector3(j,-i,0f);
                 
-                // ReSharper disable once SwitchStatementMissingSomeCases
                 switch (lines[i][j])
                 {
                     case '#':
@@ -46,23 +53,32 @@ public class LevelManager : MonoBehaviour
                         break;
                     case '@':
                         Instantiate(_player,pos,Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(_floor,pos,Quaternion.identity).transform.SetParent(transform);
                         break;
                     case '$':
                         Instantiate(_package,pos,Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(_floor,pos,Quaternion.identity).transform.SetParent(transform);
+                        numPackages++;
                         break;
                     case '.':
                         Instantiate(_goal,pos,Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(_floor,pos,Quaternion.identity).transform.SetParent(transform);
                         break;
                     case '+': 
                         Instantiate(_player,pos,Quaternion.identity).transform.SetParent(transform);
                         Instantiate(_goal,pos,Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(_floor,pos,Quaternion.identity).transform.SetParent(transform);
                         break;
                     case '*':
                         Instantiate(_package,pos,Quaternion.identity).transform.SetParent(transform);
                         Instantiate(_goal,pos,Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(_floor,pos,Quaternion.identity).transform.SetParent(transform);
+                        break;
+                    default:
+                        Instantiate(_floor,pos,Quaternion.identity).transform.SetParent(transform);
                         break;
                 }
-                Instantiate(_floor,pos,Quaternion.identity).transform.SetParent(transform);
+               
             }
         }
 
@@ -71,7 +87,7 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         string[] split = {"\n\n"};
-        currentLevel = 0;
+        currentLevel = -1;
         _levels = _levelSet.text.Split(split, StringSplitOptions.RemoveEmptyEntries);
         nextLevel();
     }

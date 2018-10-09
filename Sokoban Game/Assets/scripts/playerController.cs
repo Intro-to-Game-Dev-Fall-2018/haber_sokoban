@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(MovingObject))]
-public class playerController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
 
 	private MovingObject _motor;
 	
-	private void Start()
+	private void Awake()
 	{
 		_motor = GetComponent<MovingObject>();
 	}
 
 	private void move(int x,int y)
 	{
-		_motor.move(x, y);
+		if (_motor.move(x, y))
+			GameManager.State.moves++;
 	}
 
 	private void Update()
@@ -24,7 +25,7 @@ public class playerController : MonoBehaviour
 		var y = (int) Input.GetAxis("Vertical");
 
 		if (y != 0)
-			y = 0;
+			x = 0;
 
 		if (x != 0 || y != 0)
 			move(x,y);
