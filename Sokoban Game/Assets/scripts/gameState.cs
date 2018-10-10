@@ -2,12 +2,19 @@
 
 public class GameState : ScriptableObject
 {
+    
     public int moves;
     public int totalMoves;
-    public string levelName;
 
-    public void reset()
-    {
-        moves = 0;
-    }
+    public int levelHeight;
+    public int levelWidth;
+    public int boxCount;
+    public int goalCount;
+
+    public int boxesOnGoals;
+    
+    public string levelName;
+    
+
+  
 }

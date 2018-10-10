@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
 	private IEnumerator moveTimer()
 	{
 		_canMove = false;
-		yield return new WaitForSeconds(GameManager.Instance.Settings.timeBetweenMoves);
+		yield return new WaitForSeconds(GameManager.Instance.Settings.moveTime);
 		_canMove = true;
 	}
 	

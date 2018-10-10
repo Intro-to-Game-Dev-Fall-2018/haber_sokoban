@@ -17,7 +17,7 @@ public class MovingObject : MonoBehaviour
 	private void Awake ()
 	{
 		_rb2d = GetComponent<Rigidbody2D>();
-		inverseMoveTime = 1f / .5f;
+		inverseMoveTime = 1f / GameManager.Instance.Settings.moveTime;
 	}
 	
 	public bool move(Vector2 direction)

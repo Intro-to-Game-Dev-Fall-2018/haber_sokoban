@@ -6,6 +6,6 @@ using UnityEngine;
 public class GameSettings : ScriptableObject
 {
 	[Header("Time")] 
-	public float timeBetweenMoves = .5f;
+	public float moveTime = .5f;
 
 }

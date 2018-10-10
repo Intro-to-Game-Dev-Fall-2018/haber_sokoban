@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5291a76b2af954ceba314f4c868af089, type: 3}
   m_Name: settings_regular
   m_EditorClassIdentifier: 
-  timeBetweenMoves: 0.5
+  moveTime: 0.3
