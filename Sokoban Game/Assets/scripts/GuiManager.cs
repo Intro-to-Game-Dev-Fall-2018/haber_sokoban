@@ -9,7 +9,7 @@ public class GuiManager : MonoBehaviour
 	
 	private void Update ()
 	{
-		_score.text = "Moves: " + GameManager.State.moves;
-		_level.text = GameManager.State.levelName;
+		_score.text = "Moves: " + GameManager.Instance.State.moves;
+		_level.text = GameManager.Instance.State.levelName;
 	}
 }

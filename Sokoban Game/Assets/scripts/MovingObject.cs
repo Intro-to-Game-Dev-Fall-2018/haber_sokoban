@@ -41,7 +41,7 @@ public class MovingObject : MonoBehaviour
 	private IEnumerator moveTimer()
 	{
 		canMove = false;
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(GameManager.Instance.Settings.timeBetweenMoves);
 		canMove = true;
 	}
 

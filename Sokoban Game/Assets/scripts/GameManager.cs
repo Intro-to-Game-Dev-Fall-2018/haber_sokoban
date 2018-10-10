@@ -5,8 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-	public static GameManager Instance = null;
-	public static GameState State;
+	public static GameManager Instance;
+	[HideInInspector] public GameState State;
 	public GameSettings Settings;
 	
 	[SerializeField] private LevelManager _level;

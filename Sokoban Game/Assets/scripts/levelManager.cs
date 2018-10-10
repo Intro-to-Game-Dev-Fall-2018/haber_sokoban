@@ -39,7 +39,7 @@ public class LevelManager : MonoBehaviour
         {
             if (lines[i].StartsWith(";"))
             {
-                GameManager.State.levelName = lines[i].Replace("; ","");
+                GameManager.Instance.State.levelName = lines[i].Replace("; ","");
                 continue;
             }
             for (var j = 0; j < lines[i].Length; j++)
