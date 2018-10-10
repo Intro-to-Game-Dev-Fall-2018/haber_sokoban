@@ -9,17 +9,17 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1128134385881214}
+  m_RootGameObject: {fileID: 1847546291684006}
   m_IsPrefabAsset: 1
---- !u!1 &1128134385881214
+--- !u!1 &1847546291684006
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4918664808815004}
-  - component: {fileID: 114078088408074402}
+  - component: {fileID: 4676853720790108}
+  - component: {fileID: 114637991688336098}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -27,12 +27,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4918664808815004
+--- !u!4 &4676853720790108
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1128134385881214}
+  m_GameObject: {fileID: 1847546291684006}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,12 +40,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114078088408074402
+--- !u!114 &114637991688336098
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1128134385881214}
+  m_GameObject: {fileID: 1847546291684006}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d8c19fe4e8ec42c6b180675836d5c07, type: 3}
@@ -55,5 +55,5 @@ MonoBehaviour:
   _wall: {fileID: 1990294895999078, guid: fc9db36644cd3433eaf14964e3baeddd, type: 2}
   _box: {fileID: 1691612887789386, guid: e64f671caa7eb4eed969f5b15cf14986, type: 2}
   _player: {fileID: 1660886390548924, guid: a3e3bd9c5e442471bb884fb577d9a87f, type: 2}
-  _goal: {fileID: 1003935150694602, guid: d7222a94bbeb8406e91208f7375525aa, type: 2}
+  _goal: {fileID: 1171339107922920, guid: d7222a94bbeb8406e91208f7375525aa, type: 2}
   _floor: {fileID: 1224800153730994, guid: 5db3e28a61fae479d9581404ce7e507b, type: 2}

@@ -37,7 +37,6 @@ public class LevelManager : MonoBehaviour
         var numGoals = 0;
         var width = 0;
         var height = 0;
-        var boxesOnGoals = 0;
         var name = "level";
         
         for (var i = 0; i < lines.Length; i++)
@@ -86,7 +85,6 @@ public class LevelManager : MonoBehaviour
                         Instantiate(_floor,pos,Quaternion.identity).transform.SetParent(transform);
                         numBoxes++;
                         numGoals++;
-                        boxesOnGoals++;
                         break;
                     default:
                         Instantiate(_floor,pos,Quaternion.identity).transform.SetParent(transform);
@@ -102,7 +100,6 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.State.levelHeight = height;
         GameManager.Instance.State.levelWidth = width;
         GameManager.Instance.State.levelName = name;
-        GameManager.Instance.State.boxesOnGoals = boxesOnGoals;
 
     }
 
