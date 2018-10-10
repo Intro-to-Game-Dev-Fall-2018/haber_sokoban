@@ -9,9 +9,6 @@ public class GameManager : MonoBehaviour
 	[HideInInspector] public GameState State;
 	public GameSettings Settings;
 	
-	[SerializeField] private LevelManager _level;
-	
-	
 	private void Awake()
 	{
 		if (Instance == null)
