@@ -18,6 +18,7 @@ public class LevelManager : MonoBehaviour
 
     public void resetLevel()
     {
+        GameManager.Instance.State.totalMoves -= GameManager.Instance.State.moves;   
         loadLevel(currentLevel);
     }
     
@@ -36,7 +37,6 @@ public class LevelManager : MonoBehaviour
         var numBoxes = 0;
         var numGoals = 0;
         var width = 0;
-        var height = 0;
         var name = "level";
         
         for (var i = 0; i < lines.Length; i++)
@@ -51,7 +51,6 @@ public class LevelManager : MonoBehaviour
             
             for (var j = 0; j < lines[i].Length; j++)
             {
-                height++;
                 var pos = new Vector3(j,-i,0f);
                 
                 switch (lines[i][j])
@@ -98,10 +97,10 @@ public class LevelManager : MonoBehaviour
         
         GameManager.Instance.State.boxCount = numBoxes;
         GameManager.Instance.State.goalCount = numGoals;
-        GameManager.Instance.State.levelHeight = height;
+        GameManager.Instance.State.levelHeight = lines.Length;
         GameManager.Instance.State.levelWidth = width;
         GameManager.Instance.State.levelName = name;
-
+        GameManager.Instance.State.moves = 0;
     }
 
     private void Start()

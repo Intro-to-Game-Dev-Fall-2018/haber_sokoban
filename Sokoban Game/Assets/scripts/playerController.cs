@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
 		if (!success) return;
 		
 		GameManager.Instance.State.moves++;
+		GameManager.Instance.State.totalMoves++;   
 		StartCoroutine(moveTimer());
 	}
 

@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
 
 	private Camera _camera;
+	private string _sceneName;
 	
 	private void Start ()
 	{
@@ -14,6 +13,12 @@ public class CameraController : MonoBehaviour
 	
 	private void Update ()
 	{
-		_camera.orthographicSize = GameManager.Instance.State.levelWidth/2;
+		if (_sceneName == GameManager.Instance.State.levelName) return;
+
+		_sceneName = GameManager.Instance.State.levelName;
+		var pos = new Vector3(GameManager.Instance.State.levelWidth / 2  -2, -GameManager.Instance.State.levelHeight/2 +1f,-10);
+		_camera.orthographicSize = GameManager.Instance.State.levelHeight/2;
+		transform.position = pos;
+
 	}
 }
