@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
 			Instance = this;
 		else if (Instance!= this)
 			Destroy(gameObject);
-		DontDestroyOnLoad(gameObject);
 
 		_active = true;
 		State = ScriptableObject.CreateInstance<GameState>();

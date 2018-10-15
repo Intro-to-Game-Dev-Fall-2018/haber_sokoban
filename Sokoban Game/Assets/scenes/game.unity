@@ -189,7 +189,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2095090392}
+      - m_Target: {fileID: 2070422777}
         m_MethodName: resetLevel
         m_Mode: 1
         m_Arguments:
@@ -421,7 +421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   State: {fileID: 0}
   Settings: {fileID: 11400000, guid: 22b7a818fcf8e4c1c9e8c3802f2d85b7, type: 2}
-  _levelManager: {fileID: 2095090392}
+  _levelManager: {fileID: 2070422777}
 --- !u!4 &68358569
 Transform:
   m_ObjectHideFlags: 0
@@ -525,7 +525,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2095090392}
+      - m_Target: {fileID: 2070422777}
         m_MethodName: nextLevel
         m_Mode: 1
         m_Arguments:
@@ -582,6 +582,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -596,6 +597,17 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ed5d7cd9993a4426be770e3ed1f78ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -605,7 +617,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.9528302, g: 0.8918889, b: 0.51686543, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -1337,9 +1349,9 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e2f067302614ee7b67846e01ae2f86, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &2095090392 stripped
+--- !u!114 &2070422777 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114637991688336098, guid: e7e2f067302614ee7b67846e01ae2f86,
+  m_CorrespondingSourceObject: {fileID: 114737029242132050, guid: e7e2f067302614ee7b67846e01ae2f86,
     type: 2}
   m_PrefabInternal: {fileID: 1794111466}
-  m_Script: {fileID: 11500000, guid: 7d8c19fe4e8ec42c6b180675836d5c07, type: 3}
+  m_Script: {fileID: 11500000, guid: acbc1c558a3794ad1a35a3aad6b6f235, type: 3}
