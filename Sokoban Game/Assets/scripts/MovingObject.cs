@@ -1,7 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security;
 using UnityEngine;
 
+public enum MOVE
+{
+	FAIL = 0,
+	WALK = 1,
+	PUSH = 2
+}
 
 //https://www.youtube.com/watch?v=fURWEzpNPL8
 public class MovingObject : MonoBehaviour
@@ -21,18 +28,23 @@ public class MovingObject : MonoBehaviour
 		inverseMoveTime = 1f / GameManager.Instance.Settings.moveTime;
 	}
 	
-	public bool move(Vector2 direction)
+	public MOVE move(Vector2 direction)
 	{
-		if (_moving) return false;
+		if (_moving) return MOVE.FAIL;
+		
+		var push = false;
 		var newPosition = _rb2d.position + direction;
 		
-		if (wallAt(newPosition)) return false;
+		if (wallAt(newPosition)) return MOVE.FAIL;
 		if (boxAt(newPosition))
 			if (!pushBox(newPosition, direction))
-				return false;
+				return MOVE.FAIL;
+			else
+				push = true; 
 			
 		StartCoroutine(moveRoutine(_rb2d.position + direction));
-		return true;
+		
+		return push ? MOVE.PUSH : MOVE.WALK;
 	}
 
 	private bool pushBox(Vector2 newPosition, Vector2 direction)

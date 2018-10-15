@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+	[SerializeField] private PlayerAnimator _animator;
+	
 	private MovingObject _motor;
 	private bool _canMove;
 	
@@ -20,10 +22,21 @@ public class PlayerController : MonoBehaviour
 		if (!_canMove) return;
 		
 		var direction = new Vector2(x,y);
-		var success = _motor.move(direction);
+		var result = _motor.move(direction);
 
-		if (!success) return;
-		
+		switch (result)
+		{
+			case MOVE.FAIL:
+				return;
+			case MOVE.PUSH:
+				_animator.push(direction);
+				break;
+			case MOVE.WALK:
+				_animator.walk(direction);
+				break;
+		}
+
+
 		GameManager.Instance.State.moves++;
 		GameManager.Instance.State.totalMoves++;   
 		StartCoroutine(moveTimer());
