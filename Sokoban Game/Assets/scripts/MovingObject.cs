@@ -13,6 +13,7 @@ public class MovingObject : MonoBehaviour
 	
 	private Rigidbody2D _rb2d;
 	private float inverseMoveTime;
+	private bool _moving;
 	
 	private void Awake ()
 	{
@@ -22,6 +23,7 @@ public class MovingObject : MonoBehaviour
 	
 	public bool move(Vector2 direction)
 	{
+		if (_moving) return false;
 		var newPosition = _rb2d.position + direction;
 		
 		if (wallAt(newPosition)) return false;
@@ -29,7 +31,7 @@ public class MovingObject : MonoBehaviour
 			if (!pushBox(newPosition, direction))
 				return false;
 			
-		_rb2d.MovePosition(_rb2d.position + direction);
+		StartCoroutine(moveRoutine(_rb2d.position + direction));
 		return true;
 	}
 
@@ -46,7 +48,7 @@ public class MovingObject : MonoBehaviour
 		if (wallAt(newPosition)) return false;
 		if (boxAt(newPosition)) return false;
 		
-		_rb2d.MovePosition(_rb2d.position + direction);
+		StartCoroutine(moveRoutine(_rb2d.position + direction));
 		return true;
 	}
 
@@ -62,7 +64,10 @@ public class MovingObject : MonoBehaviour
 
 	private IEnumerator moveRoutine(Vector3 end)
 	{
+		if (_moving) yield break;
+		_moving = true;
 		var sqrtRemainingDistance = (transform.position - end).sqrMagnitude;
+		
 		while (sqrtRemainingDistance > float.Epsilon)
 		{
 			var newPosition = Vector3.MoveTowards(transform.position, end, inverseMoveTime * Time.deltaTime);
@@ -70,6 +75,9 @@ public class MovingObject : MonoBehaviour
 			sqrtRemainingDistance = (transform.position - end).sqrMagnitude;
 			yield return null;
 		}
+		
+		_rb2d.MovePosition(end);
+		_moving = false;
 	}
 	
 	

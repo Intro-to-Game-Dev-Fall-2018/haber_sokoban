@@ -8,9 +8,9 @@ public class GameState : ScriptableObject
 
     public float levelHeight;
     public float levelWidth;
+    
     public int boxCount;
     public int goalCount;
-
     public int boxesOnGoals;
     
     public string levelName;

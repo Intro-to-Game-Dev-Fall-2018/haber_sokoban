@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
 		if (_sceneName == GameManager.Instance.State.levelName) return;
 
 		_sceneName = GameManager.Instance.State.levelName;
-		var pos = new Vector3(GameManager.Instance.State.levelWidth / 2  -2, -GameManager.Instance.State.levelHeight/2 +1f,-10);
+		var pos = new Vector3(GameManager.Instance.State.levelWidth / 2 -1, -GameManager.Instance.State.levelHeight/2 +.5f,-10);
 		_camera.orthographicSize = GameManager.Instance.State.levelHeight/2;
 		transform.position = pos;
 

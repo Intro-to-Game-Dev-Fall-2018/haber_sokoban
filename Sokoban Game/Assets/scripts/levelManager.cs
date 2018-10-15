@@ -97,7 +97,7 @@ public class LevelManager : MonoBehaviour
         
         GameManager.Instance.State.boxCount = numBoxes;
         GameManager.Instance.State.goalCount = numGoals;
-        GameManager.Instance.State.levelHeight = lines.Length;
+        GameManager.Instance.State.levelHeight = lines.Length-1;
         GameManager.Instance.State.levelWidth = width;
         GameManager.Instance.State.levelName = name;
         GameManager.Instance.State.moves = 0;
