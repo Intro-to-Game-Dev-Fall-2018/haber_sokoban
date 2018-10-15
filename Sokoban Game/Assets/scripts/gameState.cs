@@ -15,6 +15,4 @@ public class GameState : ScriptableObject
     
     public string levelName;
     
-
-  
 }

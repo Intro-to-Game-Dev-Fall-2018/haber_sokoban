@@ -16,7 +16,8 @@ public class GuiManager : MonoBehaviour
 		_levelInfo.text = 
 			"Boxes: "+GameManager.Instance.State.boxCount+
 			"\nGoals: "+GameManager.Instance.State.goalCount+
-		    "\nDone: "+GameManager.Instance.State.boxesOnGoals;
+		    "\nDone: "+GameManager.Instance.State.boxesOnGoals+
+			"\nTotal: "+GameManager.Instance.State.totalMoves;
 		
 	}
 }
