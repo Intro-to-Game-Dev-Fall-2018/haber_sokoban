@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject _box;
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _goal;
-    [SerializeField] private GameObject _floor;
+    //[SerializeField] private GameObject _floor;
 
     private string[] _levels;
     private int currentLevel;
@@ -25,6 +25,7 @@ public class LevelManager : MonoBehaviour
     public void nextLevel()
     {
         if (currentLevel++ >= _levels.Length) return;
+        currentLevel = currentLevel % _levels.Length;
         loadLevel(currentLevel);
     }
     
@@ -97,10 +98,11 @@ public class LevelManager : MonoBehaviour
         
         GameManager.Instance.State.boxCount = numBoxes;
         GameManager.Instance.State.goalCount = numGoals;
-        GameManager.Instance.State.levelHeight = lines.Length-1;
-        GameManager.Instance.State.levelWidth = width;
+        GameManager.Instance.State.levelHeight = lines.Length - 1;
+        GameManager.Instance.State.levelWidth = width - 1;
         GameManager.Instance.State.levelName = name;
         GameManager.Instance.State.moves = 0;
+        GameManager.Instance.State.boxesOnGoals = 0;
     }
 
     private void Start()
