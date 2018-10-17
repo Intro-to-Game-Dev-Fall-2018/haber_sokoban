@@ -408,7 +408,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 598054343}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1913797038}
+        m_MethodName: cycleLevelSets
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &598054343
@@ -980,6 +991,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6fb36bc532774fd380ae108037443ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelSet: {fileID: 1750067451}
+  _levels: {fileID: 11400000, guid: c9387c78197834188bb82d34e94faa87, type: 2}
 --- !u!4 &1913797039
 Transform:
   m_ObjectHideFlags: 0

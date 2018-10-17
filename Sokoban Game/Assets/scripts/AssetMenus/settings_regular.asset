@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Name: settings_regular
   m_EditorClassIdentifier: 
   moveTime: 0.3
+  waitAfterMap: 2
+  holdOnLevelSet: 1

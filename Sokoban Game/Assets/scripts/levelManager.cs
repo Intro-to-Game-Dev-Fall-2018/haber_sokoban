@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [Header("Inputs")] 
-    [SerializeField] private TextAsset _levelSet;
+
+
 
     [Header("Assets")] 
+    [SerializeField] private Levels _levelsAsset;
     [SerializeField] private GameObject _wall;
     [SerializeField] private GameObject _box;
     [SerializeField] private GameObject _player;
@@ -42,13 +43,13 @@ public class LevelManager : MonoBehaviour
         
         for (var i = 0; i < lines.Length; i++)
         {
-            if (lines[i].Length > width) width = lines[i].Length;
-            
             if (lines[i].StartsWith(";"))
             {
                 name = lines[i].Replace("; ","");
                 continue;
             }
+            
+            if (lines[i].Length > width) width = lines[i].Length;
             
             for (var j = 0; j < lines[i].Length; j++)
             {
@@ -109,7 +110,7 @@ public class LevelManager : MonoBehaviour
     {
         string[] split = {"\n\n"};
         currentLevel = -1;
-        _levels = _levelSet.text.Split(split, StringSplitOptions.RemoveEmptyEntries);
+        _levels = _levelsAsset.getLevelSet().text.Split(split, StringSplitOptions.RemoveEmptyEntries);
         nextLevel();
     }
     

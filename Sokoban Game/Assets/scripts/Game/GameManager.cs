@@ -6,10 +6,14 @@ public class GameManager : MonoBehaviour
 {
 
 	public static GameManager Instance;
+	
 	[HideInInspector] public GameState State;
 	
 	public GameSettings Settings;
+	public Levels Levels;
+	
 	[SerializeField] private LevelManager _levelManager;
+
 
 	private bool _active;
 	
