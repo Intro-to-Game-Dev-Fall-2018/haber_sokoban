@@ -12,7 +12,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject _box;
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _goal;
-    //[SerializeField] private GameObject _floor;
 
     private string[] _levels;
     private int currentLevel;
@@ -62,34 +61,28 @@ public class LevelManager : MonoBehaviour
                         break;
                     case '@':
                         Instantiate(_player,pos,Quaternion.identity).transform.SetParent(transform);
-                        //Instantiate(_floor,pos,Quaternion.identity).transform.SetParent(transform);
                         break;
                     case '$':
                         Instantiate(_box,pos,Quaternion.identity).transform.SetParent(transform);
-                        //Instantiate(_floor,pos,Quaternion.identity).transform.SetParent(transform);
                         numBoxes++;
                         break;
                     case '.':
                         Instantiate(_goal,pos,Quaternion.identity).transform.SetParent(transform);
-                        //Instantiate(_floor,pos,Quaternion.identity).transform.SetParent(transform);
                         numGoals++;
                         break;
                     case '+': 
                         Instantiate(_player,pos,Quaternion.identity).transform.SetParent(transform);
                         Instantiate(_goal,pos,Quaternion.identity).transform.SetParent(transform);
-                        //Instantiate(_floor,pos,Quaternion.identity).transform.SetParent(transform);
                         numGoals++;
                         break;
                     case '*':
                         Instantiate(_box,pos,Quaternion.identity).transform.SetParent(transform);
                         Instantiate(_goal,pos,Quaternion.identity).transform.SetParent(transform);
-                        //Instantiate(_floor,pos,Quaternion.identity).transform.SetParent(transform);
                         numBoxes++;
                         numGoals++;
                         break;
                     // ReSharper disable once RedundantEmptySwitchSection
                     default:
-                        //Instantiate(_floor,pos,Quaternion.identity).transform.SetParent(transform);
                         break;
                 }
             }
@@ -106,7 +99,7 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.State.boxesOnGoals = 0;
     }
 
-    private void Start()
+    private void Awake()
     {
         string[] split = {"\n\n"};
         currentLevel = -1;

@@ -9,10 +9,6 @@ public class StartMenu : MonoBehaviour
 	[SerializeField] private Text _levelSet;
 	[SerializeField] private Levels _levels;
 
-	private void Start()
-	{
-		_levelSet.text = _levels.getLevelSet().name;
-	}
 
 	public void startGame()
 	{
@@ -21,7 +17,12 @@ public class StartMenu : MonoBehaviour
 
 	public void cycleLevelSets()
 	{
-		_levelSet.text = _levels.nextLevelSet();
+		_levelSet.text = _levels.nextLevelSet().name;
+	}
+	
+	private void Start()
+	{
+		_levelSet.text = _levels.getLevelSet().name;
 	}
 	
 	private IEnumerator LoadGame()

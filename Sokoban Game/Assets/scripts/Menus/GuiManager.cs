@@ -17,6 +17,5 @@ public class GuiManager : MonoBehaviour
 			"\nGoals: "+GameManager.Instance.State.goalCount+
 		    "\nDone: "+GameManager.Instance.State.boxesOnGoals+
 			"\nTotal: "+GameManager.Instance.State.totalMoves;
-		
 	}
 }

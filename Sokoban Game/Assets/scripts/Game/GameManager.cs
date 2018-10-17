@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
 	[HideInInspector] public GameState State;
 	
 	public GameSettings Settings;
-	public Levels Levels;
 	
 	[SerializeField] private LevelManager _levelManager;
 

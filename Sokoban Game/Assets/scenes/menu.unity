@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 598054343}
   - component: {fileID: 598054342}
   m_Layer: 0
-  m_Name: Level Set
+  m_Name: Levelset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9622642, g: 0.86255354, b: 0.4221253, a: 1}
+  m_Color: {r: 0.9568628, g: 0.854902, b: 0.45098042, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -881,7 +881,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Level Set
+  m_Text: Levelset
 --- !u!222 &1750067452
 CanvasRenderer:
   m_ObjectHideFlags: 0

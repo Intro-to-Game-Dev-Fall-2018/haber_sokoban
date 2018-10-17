@@ -1,25 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Levels")]
 public class Levels : ScriptableObject
 {
 	[Header("Level Sets")]
-	[SerializeField] private TextAsset[] levelSets;
+	[SerializeField] private TextAsset[] _levelSets;
 
 	private int _cur;
 	
-	public string nextLevelSet()
+	public TextAsset nextLevelSet()
 	{
-		_cur = (_cur + 1) % levelSets.Length;
-		return levelSets[_cur].name;
+		_cur = (_cur + 1) % _levelSets.Length;
+		return _levelSets[_cur];
 	}
 	
 	public TextAsset getLevelSet()
 	{
-		return levelSets[_cur];
+		return _levelSets[_cur];
 	}
 
 }
