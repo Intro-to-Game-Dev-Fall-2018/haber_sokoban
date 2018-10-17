@@ -11,7 +11,7 @@ public class StartMenu : MonoBehaviour
 
 	private void Start()
 	{
-		_levelSet.text = _levels.nextLevelSet();
+		_levelSet.text = _levels.getLevelSet().name;
 	}
 
 	public void startGame()
@@ -30,6 +30,6 @@ public class StartMenu : MonoBehaviour
 		SceneManager.UnloadSceneAsync("menu");
 		yield return op;
 	}
-	
+
 }
 

@@ -3,6 +3,15 @@
 #########
 ; Go right
 
+   #####
+####  .#
+#. $   #
+#####  #
+#@  $  #
+####   #
+   #####
+; Right, Down, Up, Left
+
 ########
 #      #
 #  $  .#
@@ -10,5 +19,5 @@
 #  $  .#
 #      #
 ########
-; It isn't rocket science
+; This isn't rocket science
 
