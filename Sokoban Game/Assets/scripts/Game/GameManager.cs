@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -38,6 +38,18 @@ public class GameManager : MonoBehaviour
 		yield return new WaitForSeconds(Settings.waitAfterMap);
 		_levelManager.nextLevel();
 		_active = true;
+	}
+
+	public void loadMenu()
+	{
+		StartCoroutine(MenuLoader());
+	}
+
+	private IEnumerator MenuLoader()
+	{
+		var op = SceneManager.LoadSceneAsync("menu", LoadSceneMode.Additive);
+		SceneManager.UnloadSceneAsync("game");
+		yield return op;
 	}
 
 }
