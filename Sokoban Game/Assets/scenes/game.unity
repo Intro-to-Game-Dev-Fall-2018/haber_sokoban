@@ -422,7 +422,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   State: {fileID: 0}
   Settings: {fileID: 11400000, guid: 22b7a818fcf8e4c1c9e8c3802f2d85b7, type: 2}
-  Levels: {fileID: 0}
   _levelManager: {fileID: 2070422777}
 --- !u!4 &68358569
 Transform:
@@ -1474,12 +1473,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114737029242132050, guid: e7e2f067302614ee7b67846e01ae2f86,
-        type: 2}
-      propertyPath: _levelsAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: c9387c78197834188bb82d34e94faa87,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e2f067302614ee7b67846e01ae2f86, type: 2}
   m_IsPrefabAsset: 0
