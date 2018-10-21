@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca760018448014c698e008385463c989, type: 3}
-  m_Name: _levels
+  m_Name: LevelSetSet
   m_EditorClassIdentifier: 
   _levelSets:
   - {fileID: 4900000, guid: a0512dd82a02d434ebfc24193436c43b, type: 3}
@@ -22,3 +22,14 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 6f0edc00f96d6404bb958f8b178915fa, type: 3}
   - {fileID: 4900000, guid: 516122e7a8564431f8a51ecedbae128b, type: 3}
   - {fileID: 4900000, guid: cc3126e431ada466883afce640c54162, type: 3}
+  _levelSets2:
+  - {fileID: 11400000, guid: 9d6a2c65a58384c8f8e2a612ba3023fb, type: 2}
+  - {fileID: 11400000, guid: 6eaaef278370e49e1950199ebae83233, type: 2}
+  - {fileID: 11400000, guid: 14a7da554dab74693b181fd50db8f90d, type: 2}
+  - {fileID: 11400000, guid: 9a41300cceec04c6c9ae1d91097de4cc, type: 2}
+  - {fileID: 11400000, guid: b14e67830168444dc9c0285a057282ad, type: 2}
+  - {fileID: 11400000, guid: 92aff7d576b124f4c9c70b0e2f68abd4, type: 2}
+  - {fileID: 11400000, guid: ea9acc800a1e8499fb9a8fab54d5dc59, type: 2}
+  - {fileID: 11400000, guid: 4415b77a82a744b3cbcb468d071f8f7c, type: 2}
+  - {fileID: 11400000, guid: d8791ea0fbcc64de28bf94ee9a8c27fb, type: 2}
+  - {fileID: 11400000, guid: da458ce668f2c48c48ec1d3458e82d98, type: 2}

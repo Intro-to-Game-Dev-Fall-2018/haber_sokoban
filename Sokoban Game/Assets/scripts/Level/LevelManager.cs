@@ -4,8 +4,6 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
 
-
-
     [Header("Assets")] 
     [SerializeField] private Levels _levelsAsset;
     [SerializeField] private GameObject _wall;
