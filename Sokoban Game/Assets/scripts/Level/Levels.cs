@@ -1,21 +1,21 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Level Set Container")]
+[CreateAssetMenu(fileName = "Level Set Container",menuName = "Levels/Level Set Container")]
 public class Levels : ScriptableObject
 {
 	[Header("Level Sets")]
 	[SerializeField] private TextAsset[] _levelSets;
-	private int _cur;
+	private int current;
 	
 	public TextAsset nextLevelSet()
 	{
-		_cur = (_cur + 1) % _levelSets.Length;
+		current = (current + 1) % _levelSets.Length;
 		return getLevelSet();
 	}
 	
 	public TextAsset getLevelSet()
 	{
-		return _levelSets[_cur];
+		return _levelSets[current];
 	}
 
 }

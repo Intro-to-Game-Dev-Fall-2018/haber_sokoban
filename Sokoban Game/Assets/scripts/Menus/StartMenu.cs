@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class StartMenu : MonoBehaviour
 {
 
-	[SerializeField] private Text _levelSet;
+	[SerializeField] private Text _levelText;
+	[SerializeField] private Text _skinText;
 	[SerializeField] private Levels _levels;
+	[SerializeField] private Skins _skins;
 
 
 	public void startGame()
@@ -17,12 +19,18 @@ public class StartMenu : MonoBehaviour
 
 	public void cycleLevelSets()
 	{
-		_levelSet.text = _levels.nextLevelSet().name;
+		_levelText.text = _levels.nextLevelSet().name;
+	}
+
+	public void cycleSkins()
+	{
+		_skinText.text = _skins.NextSkin().SkinName;
 	}
 	
 	private void Start()
 	{
-		_levelSet.text = _levels.getLevelSet().name;
+		_levelText.text = _levels.getLevelSet().name;
+		_skinText.text = _skins.CurrentSkin().SkinName;
 	}
 	
 	private IEnumerator LoadGame()

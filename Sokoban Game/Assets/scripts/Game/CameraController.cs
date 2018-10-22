@@ -4,12 +4,14 @@
 public class CameraController : MonoBehaviour
 {
 
+	[SerializeField] private Skins _skins;
 	private Camera _camera;
 	
-	private void Start ()
+	private void Awake ()
 	{
 		_camera = GetComponent<Camera>();
 		LevelManager.onLevelUpdate.AddListener(MoveCamera);
+		_camera.backgroundColor = _skins.CurrentSkin().background;
 	}
 	
 	private void MoveCamera(LevelData data)

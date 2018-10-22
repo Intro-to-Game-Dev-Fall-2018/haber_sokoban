@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba30117c51c79465a9887fce9ee0aeee, type: 3}
+  m_Name: _skins
+  m_EditorClassIdentifier: 
+  _skins:
+  - SkinName: Clone
+    Box: {fileID: 1543075785234340, guid: 77c81cd84da634c788d70c8ce97fa79f, type: 2}
+    Goal: {fileID: 1058709425877416, guid: 77c81cd84da634c788d70c8ce97fa79f, type: 2}
+    Player: {fileID: 1623700914435500, guid: 77c81cd84da634c788d70c8ce97fa79f, type: 2}
+    Wall: {fileID: 1516630560665770, guid: 77c81cd84da634c788d70c8ce97fa79f, type: 2}
+    background: {r: 1, g: 0.9725491, b: 0.6039216, a: 1}
+  - SkinName: Goth
+    Box: {fileID: 1055197187763128, guid: 2252c802ff2ed4bbe9514c8efdb5632f, type: 2}
+    Goal: {fileID: 1575612759863368, guid: 2252c802ff2ed4bbe9514c8efdb5632f, type: 2}
+    Player: {fileID: 1623700914435500, guid: 77c81cd84da634c788d70c8ce97fa79f, type: 2}
+    Wall: {fileID: 1763821411736872, guid: 2252c802ff2ed4bbe9514c8efdb5632f, type: 2}
+    background: {r: 0.18431373, g: 0.18431373, b: 0.18431373, a: 1}
