@@ -15,6 +15,15 @@ public class GameManager : MonoBehaviour
 
 	private bool _active;
 	
+	public void undo()
+	{
+		if (Instance.State.moves == 0) return;
+		foreach (var obj in FindObjectsOfType<MovingObject>())
+			obj.Undo(Instance.State.moves);
+		Instance.State.Undo();
+	}
+	
+	
 	private void Awake()
 	{
 		if (Instance == null)

@@ -17,15 +17,29 @@ public class MovingObject : MonoBehaviour
 	[Header("Wall Filter")]
 	[SerializeField] private LayerMask _wallLayer;
 	[SerializeField] private LayerMask _boxLayer;
+	[SerializeField] private LayerTester _tester;
+	[SerializeField] private bool isPlayer;
 	
 	private Rigidbody2D _rb2d;
 	private float inverseMoveTime;
 	private bool _moving;
+
+	private Dictionary<int,Vector2> _moves;
 	
-	private void Awake ()
+	private void Start ()
 	{
 		_rb2d = GetComponent<Rigidbody2D>();
 		inverseMoveTime = 1f / GameManager.Instance.Settings.moveTime;
+		_moves = new Dictionary<int, Vector2> {{0, _rb2d.position}};
+	}
+
+	public void Undo(int move)
+	{
+		Vector2 pos;
+		if (!_moves.TryGetValue(move, out pos)) return;
+		
+		_rb2d.MovePosition(pos);
+		_moves.Remove(move);
 	}
 	
 	public MOVE move(Vector2 direction)
@@ -36,32 +50,24 @@ public class MovingObject : MonoBehaviour
 		var newPosition = _rb2d.position + direction;
 		
 		if (wallAt(newPosition)) return MOVE.FAIL;
+		
 		if (boxAt(newPosition))
-			if (!pushBox(newPosition, direction))
+			if (!isPlayer)
+				return MOVE.FAIL;
+			else if (pushBox(newPosition, direction)==MOVE.FAIL)
 				return MOVE.FAIL;
 			else
 				push = true; 
-			
-		StartCoroutine(moveRoutine(_rb2d.position + direction));
+		
+		StartCoroutine(moveRoutine(newPosition));
 		
 		return push ? MOVE.PUSH : MOVE.WALK;
 	}
 
-	private bool pushBox(Vector2 newPosition, Vector2 direction)
+	private MOVE pushBox(Vector2 newPosition, Vector2 direction)
 	{
 		var box = Physics2D.OverlapPoint(newPosition,_boxLayer).gameObject;
-		return box.GetComponent<MovingObject>().boxMove(direction);
-	}
-
-	private bool boxMove(Vector2 direction)
-	{
-		var newPosition = _rb2d.position + direction;
-
-		if (wallAt(newPosition)) return false;
-		if (boxAt(newPosition)) return false;
-		
-		StartCoroutine(moveRoutine(_rb2d.position + direction));
-		return true;
+		return box.GetComponent<MovingObject>().move(direction);
 	}
 
 	private bool boxAt(Vector2 newPosition)
@@ -90,6 +96,7 @@ public class MovingObject : MonoBehaviour
 		
 		_rb2d.MovePosition(end);
 		_moving = false;
+		_moves.Add(GameManager.Instance.State.moves,end);
 	}
 	
 	

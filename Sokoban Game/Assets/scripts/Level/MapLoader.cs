@@ -56,7 +56,6 @@ public class MapLoader : MonoBehaviour
 
         GameManager.Instance.State.boxCount = numBoxes;
         GameManager.Instance.State.goalCount = numGoals;
-        GameManager.Instance.State.moves = 0;
         GameManager.Instance.State.boxesOnGoals = 0;
 
         data.init(lines);

@@ -27,5 +27,5 @@ public class GuiManager : MonoBehaviour
 	{
 		_level.text = data.LevelName;
 	}
-	
+
 }

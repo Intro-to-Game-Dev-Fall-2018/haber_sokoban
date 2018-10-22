@@ -352,6 +352,8 @@ MonoBehaviour:
   _boxLayer:
     serializedVersion: 2
     m_Bits: 512
+  _tester: {fileID: 0}
+  isPlayer: 0
 --- !u!114 &114583905697738406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -380,6 +382,8 @@ MonoBehaviour:
   _boxLayer:
     serializedVersion: 2
     m_Bits: 512
+  _tester: {fileID: 0}
+  isPlayer: 1
 --- !u!114 &114855114122004778
 MonoBehaviour:
   m_ObjectHideFlags: 1

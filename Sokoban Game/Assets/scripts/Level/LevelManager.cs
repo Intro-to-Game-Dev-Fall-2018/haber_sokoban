@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour
 
     public void ResetLevel()
     {
-        GameManager.Instance.State.totalMoves -= GameManager.Instance.State.moves;   
+        GameManager.Instance.State.ResetLevel();
         LoadLevel(currentLevel);
     }
     
@@ -29,6 +29,7 @@ public class LevelManager : MonoBehaviour
     
     private void LoadLevel(int level)
     {
+        GameManager.Instance.State.NewLevel();
         var lines = _levels[level].Split('\n');
         var data = _loader.LoadLevel(lines);
         onLevelUpdate.Invoke(data);
