@@ -9,8 +9,6 @@ public class Levels : ScriptableObject
 	[SerializeField] private TextAsset[] _levelSets;
 	private int _cur;
 	
-	[SerializeField] private LevelSet[] _levelSets2;
-
 	public TextAsset nextLevelSet()
 	{
 		_cur = (_cur + 1) % _levelSets.Length;

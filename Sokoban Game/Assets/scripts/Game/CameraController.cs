@@ -1,25 +1,21 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Camera))]
 public class CameraController : MonoBehaviour
 {
 
 	private Camera _camera;
-	private string _sceneName;
 	
 	private void Start ()
 	{
 		_camera = GetComponent<Camera>();
+		LevelManager.onLevelUpdate.AddListener(moveCamera);
 	}
 	
-	private void Update ()
+	private void moveCamera(LevelData data)
 	{
-		if (_sceneName == GameManager.Instance.State.levelName) return;
-
-		_sceneName = GameManager.Instance.State.levelName;
-		var pos = new Vector3(GameManager.Instance.State.levelWidth / 2 -.5f, -GameManager.Instance.State.levelHeight/2 +.5f,-10);
-		var size = GameManager.Instance.State.levelHeight > GameManager.Instance.State.levelWidth
-			? GameManager.Instance.State.levelHeight
-			: GameManager.Instance.State.levelWidth;
+		var pos = new Vector3(data.width / 2 -.5f, -data.height/2 +.5f,-10);
+		var size = data.height > data.width ? data.height : data.width;
 
 		_camera.orthographicSize = size/2;
 		transform.position = pos;

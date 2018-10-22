@@ -1,9 +1,12 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
+
+[Serializable]
+public class LevelUpdateEvent : UnityEvent<LevelData> {}
 
 public class LevelManager : MonoBehaviour
 {
-
     [Header("Assets")] 
     [SerializeField] private Levels _levelsAsset;
     [SerializeField] private GameObject _wall;
@@ -11,6 +14,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _goal;
 
+    public static LevelUpdateEvent onLevelUpdate;
+    private LevelData _levelData;
+    
     private string[] _levels;
     private int currentLevel;
 
@@ -35,19 +41,8 @@ public class LevelManager : MonoBehaviour
         var lines = _levels[level].Split('\n');
         var numBoxes = 0;
         var numGoals = 0;
-        var width = 0;
-        var name = "level";
-        
+
         for (var i = 0; i < lines.Length; i++)
-        {
-            if (lines[i].StartsWith(";"))
-            {
-                name = lines[i].Replace("; ","");
-                continue;
-            }
-            
-            if (lines[i].Length > width) width = lines[i].Length;
-            
             for (var j = 0; j < lines[i].Length; j++)
             {
                 var pos = new Vector3(j,-i,0f);
@@ -84,25 +79,30 @@ public class LevelManager : MonoBehaviour
                         break;
                 }
             }
-        }
-
-        if (numBoxes!=numGoals) print("boxes does not equal goals");
         
         GameManager.Instance.State.boxCount = numBoxes;
         GameManager.Instance.State.goalCount = numGoals;
-        GameManager.Instance.State.levelHeight = lines.Length - 1;
-        GameManager.Instance.State.levelWidth = width - 1;
-        GameManager.Instance.State.levelName = name;
         GameManager.Instance.State.moves = 0;
         GameManager.Instance.State.boxesOnGoals = 0;
+        
+        _levelData.init(lines);
+        onLevelUpdate.Invoke(_levelData);
+        
+        if (numBoxes!=numGoals) nextLevel();
     }
 
     private void Awake()
     {
+        if (onLevelUpdate==null) onLevelUpdate = new LevelUpdateEvent();
+        _levelData = ScriptableObject.CreateInstance<LevelData>();
+        
         string[] split = {"\n\n"};
         currentLevel = -1;
         _levels = _levelsAsset.getLevelSet().text.Split(split, StringSplitOptions.RemoveEmptyEntries);
+    }
+
+    private void Start()
+    {
         nextLevel();
     }
-    
 }
