@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Events;
+
+
+[Serializable]
+public class LevelUpdateEvent : UnityEvent<LevelData> {}
 
 public class LevelData : ScriptableObject 
 {

@@ -12,7 +12,7 @@ public class Goal : MonoBehaviour
 
 	private void OnTriggerExit2D(Collider2D other)
 	{
-		if (other.gameObject.CompareTag("Box"))
+		if (other.gameObject.CompareTag("Box")) 
 			GameManager.Instance.State.boxesOnGoals--;
 	}
 

@@ -5,6 +5,7 @@ TextureImporter:
     21300000: clone_sprites_0
     21300002: clone_sprites_1
     21300004: clone_sprites_2
+    21300006: clone_sprites_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -112,7 +113,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0249b1d3fe5594f0eb58713622cb418f
+      spriteID: e3281f6b1d37540d183e278bedbd85c2
       vertices: []
       indices: 
       edges: []
@@ -132,7 +133,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fa3759f2c808494395d3e737f7a09a3
+      spriteID: bbff9f5de36714a9ea08ba7e8733bf80
       vertices: []
       indices: 
       edges: []
@@ -152,7 +153,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5497c1f3dc76c41eeb90e38625d97fd0
+      spriteID: 424b5c0bb21ce491b96a2fbefda4b0ae
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clone_sprites_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6971638dab28444109efac3f9768de49
       vertices: []
       indices: 
       edges: []

@@ -1,9 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Events;
-
-[Serializable]
-public class LevelUpdateEvent : UnityEvent<LevelData> {}
 
 public class LevelManager : MonoBehaviour
 {
@@ -20,20 +16,20 @@ public class LevelManager : MonoBehaviour
     private string[] _levels;
     private int currentLevel;
 
-    public void resetLevel()
+    public void ResetLevel()
     {
         GameManager.Instance.State.totalMoves -= GameManager.Instance.State.moves;   
-        loadLevel(currentLevel);
+        LoadLevel(currentLevel);
     }
     
-    public void nextLevel()
+    public void NextLevel()
     {
         if (currentLevel++ >= _levels.Length) return;
         currentLevel = currentLevel % _levels.Length;
-        loadLevel(currentLevel);
+        LoadLevel(currentLevel);
     }
     
-    private void loadLevel(int level)
+    private void LoadLevel(int level)
     {
         foreach (Transform child in transform) 
             Destroy(child.gameObject);
@@ -88,7 +84,7 @@ public class LevelManager : MonoBehaviour
         _levelData.init(lines);
         onLevelUpdate.Invoke(_levelData);
         
-        if (numBoxes!=numGoals) nextLevel();
+        if (numBoxes!=numGoals) NextLevel();
     }
 
     private void Awake()
@@ -103,6 +99,6 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        nextLevel();
+        NextLevel();
     }
 }

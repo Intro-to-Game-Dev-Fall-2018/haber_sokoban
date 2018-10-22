@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
 	
 	[SerializeField] private LevelManager _levelManager;
 
-
 	private bool _active;
 	
 	private void Awake()
@@ -33,13 +32,17 @@ public class GameManager : MonoBehaviour
 		
 		if (State.boxesOnGoals == State.goalCount) 
 			StartCoroutine(nextLevel());
+		else if (Input.GetButton("Reset")) 
+			_levelManager.ResetLevel();
 	}
 
 	private IEnumerator nextLevel()
 	{
 		_active = false;
-		yield return new WaitForSeconds(Settings.waitAfterMap);
-		_levelManager.nextLevel();
+		Time.timeScale = 0;
+		yield return new WaitForSecondsRealtime(Settings.waitAfterMap);
+		Time.timeScale = 1;
+		_levelManager.NextLevel();
 		_active = true;
 	}
 

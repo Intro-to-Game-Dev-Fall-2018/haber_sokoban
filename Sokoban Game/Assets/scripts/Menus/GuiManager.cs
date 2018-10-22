@@ -10,7 +10,7 @@ public class GuiManager : MonoBehaviour
 
 	private void Start()
 	{
-		LevelManager.onLevelUpdate.AddListener(levelUpdate);
+		LevelManager.onLevelUpdate.AddListener(LevelUpdate);
 	}
 
 	private void Update ()
@@ -23,7 +23,7 @@ public class GuiManager : MonoBehaviour
 			"\nTotal: "+GameManager.Instance.State.totalMoves;
 	}
 
-	void levelUpdate(LevelData data)
+	private void LevelUpdate(LevelData data)
 	{
 		_level.text = data.LevelName;
 	}
