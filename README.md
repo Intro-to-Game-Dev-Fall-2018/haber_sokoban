@@ -10,12 +10,10 @@ esc - Menu
 ```
 
 ## WebGL Builds
-```
-game
+#### game
 https://jaminhaber.itch.io/sokoban
-clone
+#### clone
 https://jaminhaber.itch.io/sokoban-clone
-```
 
 ## features
 ```
