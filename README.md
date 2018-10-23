@@ -1,5 +1,5 @@
 # haber_sokoban
-Push boxes onto goals
+Welcome to Sokoban, a game where you push boxes onto goals.
 
 ## Controls
 ```
@@ -10,4 +10,17 @@ esc - Menu
 ```
 
 ## WebGL Builds
+```
+game
+https://jaminhaber.itch.io/sokoban
+clone
 https://jaminhaber.itch.io/sokoban-clone
+```
+
+## features
+```
+- multiple map sets
+- multiple game skins
+- undo feature
+- progress saved
+```
