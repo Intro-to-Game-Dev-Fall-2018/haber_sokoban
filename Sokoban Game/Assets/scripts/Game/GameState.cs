@@ -26,5 +26,11 @@ public class GameState : ScriptableObject
         moves--;
         totalMoves--;
     }
+
+    public void Move()
+    {
+        moves++;
+        totalMoves++;
+    }
     
 }

@@ -17,7 +17,6 @@ public class MovingObject : MonoBehaviour
 	[Header("Wall Filter")]
 	[SerializeField] private LayerMask _wallLayer;
 	[SerializeField] private LayerMask _boxLayer;
-	[SerializeField] private LayerTester _tester;
 	[SerializeField] private bool isPlayer;
 	
 	private Rigidbody2D _rb2d;
@@ -30,14 +29,14 @@ public class MovingObject : MonoBehaviour
 	{
 		_rb2d = GetComponent<Rigidbody2D>();
 		inverseMoveTime = 1f / GameManager.Instance.Settings.moveTime;
-		_moves = new Dictionary<int, Vector2> {{0, _rb2d.position}};
+		_moves = new Dictionary<int, Vector2>();
 	}
 
 	public void Undo(int move)
 	{
-		Vector2 pos;
-		if (!_moves.TryGetValue(move, out pos)) return;
+		if (!_moves.ContainsKey(move)) return;
 		
+		var pos = _moves[move];
 		_rb2d.MovePosition(pos);
 		_moves.Remove(move);
 	}
@@ -58,6 +57,8 @@ public class MovingObject : MonoBehaviour
 				return MOVE.FAIL;
 			else
 				push = true; 
+		
+		_moves.Add(GameManager.Instance.State.moves,_rb2d.position);
 		
 		StartCoroutine(moveRoutine(newPosition));
 		
@@ -96,7 +97,6 @@ public class MovingObject : MonoBehaviour
 		
 		_rb2d.MovePosition(end);
 		_moving = false;
-		_moves.Add(GameManager.Instance.State.moves,end);
 	}
 	
 	

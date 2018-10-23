@@ -13,7 +13,6 @@ public class PlayerAnimator : MonoBehaviour
 	private int pushSideCur;
 	private int walkTopCur;
 	private int pushTopCur;
-	
 
 	private SpriteRenderer _renderer;
 	
@@ -22,7 +21,15 @@ public class PlayerAnimator : MonoBehaviour
 		_renderer = GetComponent<SpriteRenderer>();
 	}
 
-	public void walk(Vector2 direction)
+	public void Advance(MOVE status,Vector2 direction)
+	{
+		if (status == MOVE.PUSH)
+			push(direction);
+		else if (status == MOVE.WALK) 
+			walk(direction);
+	}
+
+	private void walk(Vector2 direction)
 	{
 		if (direction.y != 0)
 		{
@@ -39,7 +46,7 @@ public class PlayerAnimator : MonoBehaviour
 		
 	}
 	
-	public void push(Vector2 direction)
+	private void push(Vector2 direction)
 	{
 		if (direction.y != 0)
 		{

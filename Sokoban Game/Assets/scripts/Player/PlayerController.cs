@@ -24,21 +24,12 @@ public class PlayerController : MonoBehaviour
 		var direction = new Vector2(x,y);
 		var result = _motor.move(direction);
 
-		switch (result)
-		{
-			case MOVE.FAIL:
-				return;
-			case MOVE.PUSH:
-				_animator.push(direction);
-				break;
-			case MOVE.WALK:
-				_animator.walk(direction);
-				break;
-		}
+		if (result == MOVE.FAIL )
+			return;
+		
+		_animator.Advance(result,direction);
 
-
-		GameManager.Instance.State.moves++;
-		GameManager.Instance.State.totalMoves++;   
+		GameManager.Instance.State.Move();
 		StartCoroutine(moveTimer());
 	}
 

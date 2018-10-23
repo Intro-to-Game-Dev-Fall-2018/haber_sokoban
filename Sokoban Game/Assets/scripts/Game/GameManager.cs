@@ -18,9 +18,10 @@ public class GameManager : MonoBehaviour
 	public void undo()
 	{
 		if (Instance.State.moves == 0) return;
+		
+		Instance.State.Undo();
 		foreach (var obj in FindObjectsOfType<MovingObject>())
 			obj.Undo(Instance.State.moves);
-		Instance.State.Undo();
 	}
 	
 	
