@@ -15,16 +15,6 @@ public class GameManager : MonoBehaviour
 
 	private bool _active;
 	
-	public void undo()
-	{
-		if (Instance.State.moves == 0) return;
-		
-		Instance.State.Undo();
-		foreach (var obj in FindObjectsOfType<MovingObject>())
-			obj.Undo(Instance.State.moves);
-	}
-	
-	
 	private void Awake()
 	{
 		if (Instance == null)
@@ -44,8 +34,33 @@ public class GameManager : MonoBehaviour
 			StartCoroutine(nextLevel());
 		else if (Input.GetButton("Reset")) 
 			_levelManager.ResetLevel();
+		else if (Input.GetButton("Undo")) 
+			Undo();
+		else if (Input.GetButton("Cancel"))
+			loadMenu();
+	}
+	
+	//public functions
+	public void Undo()
+	{
+		if (State.moves == 0) return;
+		StartCoroutine(UndoRoutine());
 	}
 
+	public void loadMenu()
+	{
+		StartCoroutine(MenuLoader());
+	}
+
+	//Coroutines
+	private IEnumerator MenuLoader()
+	{
+		_active = false;
+		var op = SceneManager.LoadSceneAsync("menu", LoadSceneMode.Additive);
+		SceneManager.UnloadSceneAsync("game");
+		yield return op;
+	}
+	
 	private IEnumerator nextLevel()
 	{
 		_active = false;
@@ -55,17 +70,15 @@ public class GameManager : MonoBehaviour
 		_levelManager.NextLevel();
 		_active = true;
 	}
-
-	public void loadMenu()
+	
+	private IEnumerator UndoRoutine()
 	{
-		StartCoroutine(MenuLoader());
-	}
-
-	private IEnumerator MenuLoader()
-	{
-		var op = SceneManager.LoadSceneAsync("menu", LoadSceneMode.Additive);
-		SceneManager.UnloadSceneAsync("game");
-		yield return op;
+		_active = false;
+		Instance.State.Undo();
+		foreach (var obj in FindObjectsOfType<MovingObject>())
+			obj.Undo(Instance.State.moves);
+		yield return new WaitForSecondsRealtime(Settings.undoDelay);
+		_active = true;
 	}
 
 }
