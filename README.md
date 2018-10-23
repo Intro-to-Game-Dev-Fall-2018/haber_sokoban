@@ -1,8 +1,13 @@
 # haber_sokoban
-puzzle game
+Push boxes onto goals
 
 ## Controls
-arrow keys
+```
+WASD - move
+R - reset
+E - Undo
+esc - Menu
+```
 
 ## WebGL Builds
 https://jaminhaber.itch.io/sokoban-clone
