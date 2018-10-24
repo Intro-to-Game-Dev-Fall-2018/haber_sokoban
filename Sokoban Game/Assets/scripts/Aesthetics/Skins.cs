@@ -2,31 +2,43 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+public class OnChangeSkin : UnityEvent<Skin> {}
+
 [Serializable]
-public struct AssetSet
+public struct Skin
 {
 	public string SkinName;
 	public GameObject Box;
 	public GameObject Goal;
 	public GameObject Player;
 	public GameObject Wall;
-	public Color background;
+	public Color Background;
+	public Color TextColor;
+	public Color ButtonColor;
 }
 
 [CreateAssetMenu(fileName = "Skin Set", menuName = "Skins/Skin Set")]
 public class Skins : ScriptableObject
 {
-	[SerializeField] private AssetSet[] _skins;
+	public OnChangeSkin onChangeSkin;
+	
+	[SerializeField] private Skin[] _skins;
 	private int current;
 
-	public AssetSet CurrentSkin()
+	private void OnEnable()
+	{
+		if (onChangeSkin==null) onChangeSkin = new OnChangeSkin();
+	}
+
+	public Skin CurrentSkin()
 	{
 		return _skins[current];
 	}
 
-	public AssetSet NextSkin()
+	public Skin NextSkin()
 	{
 		current = (current + 1) % _skins.Length;
+		onChangeSkin.Invoke(CurrentSkin());
 		return CurrentSkin();
 	}
 

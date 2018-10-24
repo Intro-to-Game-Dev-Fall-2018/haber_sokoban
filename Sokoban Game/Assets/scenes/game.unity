@@ -403,6 +403,7 @@ GameObject:
   - component: {fileID: 68358568}
   - component: {fileID: 68358570}
   - component: {fileID: 68358571}
+  - component: {fileID: 68358572}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -464,6 +465,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelsAsset: {fileID: 11400000, guid: c9387c78197834188bb82d34e94faa87, type: 2}
   _loader: {fileID: 1509039582}
+--- !u!114 &68358572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 68358567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d665afe1a1fb4ab484856e45fe65430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skins: {fileID: 11400000, guid: c9fb9ac308fa84cd6ac5844ef48d654d, type: 2}
+  _titles:
+  - {fileID: 1711364174}
+  - {fileID: 59077468}
+  - {fileID: 1013033712}
+  _menu: {fileID: 1703415940}
+  _camera: {fileID: 519420031}
+  _background: {fileID: 0}
+  _buttons:
+  - {fileID: 315236758}
+  - {fileID: 51014505}
+  - {fileID: 1079348577}
+  - {fileID: 2127366302}
 --- !u!1 &315236755
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +648,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed5d7cd9993a4426be770e3ed1f78ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skins: {fileID: 11400000, guid: c9fb9ac308fa84cd6ac5844ef48d654d, type: 2}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

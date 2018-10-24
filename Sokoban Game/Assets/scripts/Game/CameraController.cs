@@ -3,15 +3,12 @@
 [RequireComponent(typeof(Camera))]
 public class CameraController : MonoBehaviour
 {
-
-	[SerializeField] private Skins _skins;
 	private Camera _camera;
 	
 	private void Awake ()
 	{
 		_camera = GetComponent<Camera>();
 		LevelManager.onLevelUpdate.AddListener(MoveCamera);
-		_camera.backgroundColor = _skins.CurrentSkin().background;
 	}
 	
 	private void MoveCamera(LevelData data)
@@ -21,6 +18,5 @@ public class CameraController : MonoBehaviour
 
 		_camera.orthographicSize = size/2;
 		transform.position = pos;
-
 	}
 }

@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-
 [Serializable]
 public class LevelUpdateEvent : UnityEvent<LevelData> {}
 

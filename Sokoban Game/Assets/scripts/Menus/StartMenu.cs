@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class StartMenu : MonoBehaviour
 {
 
+	[Header("Menu")]
 	[SerializeField] private Text _levelText;
 	[SerializeField] private Text _skinText;
+	
+	[Header("Data")]
 	[SerializeField] private Levels _levels;
 	[SerializeField] private Skins _skins;
-
 
 	public void startGame()
 	{
