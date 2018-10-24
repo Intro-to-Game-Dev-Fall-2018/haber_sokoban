@@ -5,6 +5,7 @@ public class GameState : ScriptableObject
     
     public int moves;
     public int totalMoves;
+    public int bestMoves;
 
     public int boxCount;
     public int goalCount;

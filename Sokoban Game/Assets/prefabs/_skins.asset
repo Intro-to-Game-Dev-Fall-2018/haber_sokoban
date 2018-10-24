@@ -29,10 +29,10 @@ MonoBehaviour:
     TextColor: {r: 0.45882356, g: 0.26666668, b: 0.5294118, a: 1}
     ButtonColor: {r: 0.8313726, g: 0.48235297, b: 0.7372549, a: 1}
   - SkinName: Matrix
-    Box: {fileID: 1055197187763128, guid: 2252c802ff2ed4bbe9514c8efdb5632f, type: 2}
-    Goal: {fileID: 1575612759863368, guid: 2252c802ff2ed4bbe9514c8efdb5632f, type: 2}
-    Player: {fileID: 1623700914435500, guid: 77c81cd84da634c788d70c8ce97fa79f, type: 2}
-    Wall: {fileID: 1763821411736872, guid: 2252c802ff2ed4bbe9514c8efdb5632f, type: 2}
+    Box: {fileID: 1543075785234340, guid: 96aaaa15b09fd439bbba8cdde76b1101, type: 2}
+    Goal: {fileID: 1058709425877416, guid: 96aaaa15b09fd439bbba8cdde76b1101, type: 2}
+    Player: {fileID: 1623700914435500, guid: 96aaaa15b09fd439bbba8cdde76b1101, type: 2}
+    Wall: {fileID: 1516630560665770, guid: 96aaaa15b09fd439bbba8cdde76b1101, type: 2}
     Background: {r: 0, g: 0, b: 0, a: 1}
     TextColor: {r: 0.043078475, g: 0.8207547, b: 0, a: 1}
-    ButtonColor: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
+    ButtonColor: {r: 0, g: 0, b: 0, a: 1}

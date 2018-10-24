@@ -16,11 +16,15 @@ public class GuiManager : MonoBehaviour
 	private void Update ()
 	{
 		_score.text = GameManager.Instance.State.moves.ToString("D4");
-		_levelInfo.text = 
-			"Boxes: "+GameManager.Instance.State.boxCount+
-			"\nGoals: "+GameManager.Instance.State.goalCount+
-		    "\nDone: "+GameManager.Instance.State.boxesOnGoals+
-			"\nTotal: "+GameManager.Instance.State.totalMoves;
+		_levelInfo.text = LevelInfo();
+	}
+
+	private string LevelInfo()
+	{
+		return "Boxes: "+GameManager.Instance.State.boxCount+
+		       "\nGoals: "+GameManager.Instance.State.goalCount+
+		       "\nDone: "+GameManager.Instance.State.boxesOnGoals+
+		       "\nTotal: "+GameManager.Instance.State.totalMoves;
 	}
 
 	private void LevelUpdate(LevelData data)

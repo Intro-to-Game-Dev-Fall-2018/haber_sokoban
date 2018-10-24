@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 		if (!_active) return;
 		
 		if (State.boxesOnGoals == State.goalCount) 
-			StartCoroutine(nextLevel());
+			StartCoroutine(PassLevel());
 		else if (Input.GetButton("Reset")) 
 			_levelManager.ResetLevel();
 		else if (Input.GetButton("Undo")) 
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
 		yield return op;
 	}
 	
-	private IEnumerator nextLevel()
+	private IEnumerator PassLevel()
 	{
 		_active = false;
 		Time.timeScale = 0;
