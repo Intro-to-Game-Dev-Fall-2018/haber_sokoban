@@ -21,7 +21,7 @@ public class StartMenu : MonoBehaviour
 
 	public void cycleLevelSets()
 	{
-		_levelText.text = _levels.nextLevelSet().name;
+		_levelText.text = _levels.NextLevelSet().Name;
 	}
 
 	public void cycleSkins()
@@ -31,7 +31,7 @@ public class StartMenu : MonoBehaviour
 	
 	private void Start()
 	{
-		_levelText.text = _levels.getLevelSet().name;
+		_levelText.text = _levels.GetLevelSet().Name;
 		_skinText.text = _skins.CurrentSkin().SkinName;
 	}
 	

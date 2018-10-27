@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 	private MovingObject _motor;
 	private bool _canMove;
 	
-	private void Awake()
+	private void Start()
 	{
 		_motor = GetComponent<MovingObject>();
 		_canMove = true;
@@ -43,7 +43,6 @@ public class PlayerController : MonoBehaviour
 
 		if (x != 0 || y != 0)
 			move(x,y);
-		
 	}
 	
 	private IEnumerator moveTimer()

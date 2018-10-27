@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
     
     private string[] _levels;
     private int currentLevel;
+    private Set _set;
 
     public void ResetLevel()
     {
@@ -23,7 +24,7 @@ public class LevelManager : MonoBehaviour
         if (currentLevel++ >= _levels.Length) return;
         currentLevel = currentLevel % _levels.Length;
         LoadLevel(currentLevel);
-        PlayerPrefs.SetInt(_levelsAsset.getLevelSet().name,currentLevel);
+        _set.Progress = currentLevel;
     }
     
     private void LoadLevel(int level)
@@ -37,11 +38,10 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         if (onLevelUpdate==null) onLevelUpdate = new LevelUpdateEvent();
-
-        string[] split = {"\n\n"};
-        _levels = _levelsAsset.getLevelSet().text.Split(split, StringSplitOptions.RemoveEmptyEntries);
         
-        currentLevel = PlayerPrefs.GetInt(_levelsAsset.getLevelSet().name);
+        _set = _levelsAsset.GetLevelSet();
+        _levels = _set.GetLevels();
+        currentLevel = _set.Progress;
     }
 
     private void Start()

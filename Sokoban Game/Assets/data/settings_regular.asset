@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveTime: 0.3
   waitAfterMap: 2
+  undoDelay: 0.5

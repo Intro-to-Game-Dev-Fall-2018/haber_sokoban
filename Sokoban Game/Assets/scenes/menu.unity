@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 248313086}
   - component: {fileID: 248313089}
   m_Layer: 0
-  m_Name: StartMenu
+  m_Name: Menu Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1220,11 +1220,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skins: {fileID: 11400000, guid: c9fb9ac308fa84cd6ac5844ef48d654d, type: 2}
-  _titles:
-  - {fileID: 1200241958}
   _menu: {fileID: 248313085}
   _camera: {fileID: 0}
   _background: {fileID: 821487123}
+  _titles:
+  - {fileID: 1200241958}
   _buttons:
   - {fileID: 598054343}
   - {fileID: 1207446231}

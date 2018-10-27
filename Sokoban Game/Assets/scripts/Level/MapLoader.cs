@@ -12,7 +12,7 @@ public class MapLoader : MonoBehaviour
         var assets = _skins.CurrentSkin();
         var numBoxes = 0;
         var numGoals = 0;
-        var data = ScriptableObject.CreateInstance(typeof(LevelData)) as LevelData;
+        var data = new LevelData();
 
         for (var i = 0; i < lines.Length; i++)
         {

@@ -5,7 +5,7 @@ using UnityEngine.Events;
 [Serializable]
 public class LevelUpdateEvent : UnityEvent<LevelData> {}
 
-public class LevelData : ScriptableObject 
+public class LevelData  
 {
     public string LevelName;
     
