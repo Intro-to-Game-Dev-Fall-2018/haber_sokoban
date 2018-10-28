@@ -39,7 +39,7 @@ public class LevelManager : MonoBehaviour
     {
         if (onLevelUpdate==null) onLevelUpdate = new LevelUpdateEvent();
         
-        _set = _levelsAsset.GetLevelSet();
+        _set = _levelsAsset.Set;
         _levels = _set.GetLevels();
         currentLevel = _set.Progress;
     }

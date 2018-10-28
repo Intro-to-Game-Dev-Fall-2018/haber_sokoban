@@ -12,27 +12,31 @@ public class SkinLoader : MonoBehaviour
 	[SerializeField] private Camera _camera;
 	[SerializeField] private Image _background;
 	[SerializeField] private TextMeshProUGUI[] _titles;
-	[SerializeField] private Image[] _buttons;
 	
 	private void Start () {
 		_skins.onChangeSkin.AddListener(onChangeSkin);
 		onChangeSkin(_skins.CurrentSkin());
 	}
 
+	// ReSharper disable once InvertIf
 	private void onChangeSkin(Skin skin)
 	{
 		if (_camera!=null) 
 			_camera.backgroundColor = skin.Background;
+		
 		if (_background != null) 
 			_background.color = skin.Background;
+		
 		if (_menu!=null) 
+		{
 			foreach (var text in _menu.GetComponentsInChildren<Text>())
 				text.color = skin.TextColor;
+			foreach (var g in _menu.GetComponentsInChildren<Button>())
+				g.gameObject.GetComponent<Graphic>().color = skin.ButtonColor;
+		}
+		
 		if (_titles != null)
 			foreach (var title in _titles)
 				title.color = skin.TextColor;
-		if (_buttons != null)
-			foreach (var button in _buttons)
-				button.color = skin.ButtonColor;
 	}
 }
