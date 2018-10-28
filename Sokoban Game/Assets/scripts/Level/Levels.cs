@@ -6,24 +6,19 @@ using UnityEngine;
 public class Levels : ScriptableObject
 {
 	[SerializeField] private Set[] _sets;
-	
 	[SerializeField] private Set set;
+	
 	private int current;
-
-//	public Set NextLevelSet()
-//	{
-//		current = (current + 1) % _sets.Length;
-//		return GetLevelSet();
-//	}
-//	
-//	public Set GetLevelSet()
-//	{
-//		return _sets[current];
-//	}
 
 	public Set Set {get { return set; } set { set = value; }}
 
 	public IEnumerable<Set> Sets {get { return _sets;  }}
+
+	public void ResetProgress()
+	{
+		foreach (var s in _sets)
+			s.Reset();
+	}
 }
 
 [Serializable]
@@ -35,8 +30,11 @@ public class Set
 	[SerializeField] private DIFFICULTY _difficulty;
 	[SerializeField] private string _description;
 	
-	[SerializeField] private int progress;
+	[SerializeField] private int _progress;
+	[SerializeField] private bool _complete;
 
+	private int size;
+	
 	public string Name
 	{
 		get { return _name; }
@@ -54,13 +52,30 @@ public class Set
 	
 	public int Progress
 	{
-		get { return progress; }
-		set { progress = value; }
+		get { return _progress; }
+		set
+		{
+			_progress = value;
+			if (_progress == GetSize()) 
+				Finish();
+		}
+	}
+
+	public void Finish()
+	{
+		_complete = true;
+	}
+
+	public void Reset()
+	{
+		_complete = false;
+		_progress = 0;
 	}
 
 	public int GetSize()
 	{
-		return GetLevels().Length;
+		if ( size==0 ) size = GetLevels().Length;
+		return size;
 	}
 	
 	public string[] GetLevels()

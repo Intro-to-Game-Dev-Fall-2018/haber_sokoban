@@ -21,10 +21,10 @@ public class LevelManager : MonoBehaviour
     
     public void NextLevel()
     {
-        if (currentLevel++ >= _levels.Length) return;
+        if (currentLevel++ > _levels.Length) return;
+        _set.Progress = currentLevel;
         currentLevel = currentLevel % _levels.Length;
         LoadLevel(currentLevel);
-        _set.Progress = currentLevel;
     }
     
     private void LoadLevel(int level)
