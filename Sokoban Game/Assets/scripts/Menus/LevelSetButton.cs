@@ -23,7 +23,7 @@ public class LevelSetButton : MonoBehaviour {
 		_set = set;
 		nameLabel.text = set.Name;
 		author.text = "by " + set.Author;
-		progress.text = set.Progress+" of "+set.GetSize();
+		progress.text = set.Complete ? "complete" : set.Progress+" of "+set.GetSize();
 		_levels = levels;
 	}
     
