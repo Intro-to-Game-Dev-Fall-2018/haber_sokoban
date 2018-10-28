@@ -477,18 +477,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skins: {fileID: 11400000, guid: c9fb9ac308fa84cd6ac5844ef48d654d, type: 2}
+  _menu: {fileID: 1703415940}
+  _camera: {fileID: 519420031}
+  _background: {fileID: 0}
   _titles:
   - {fileID: 1711364174}
   - {fileID: 59077468}
   - {fileID: 1013033712}
-  _menu: {fileID: 1703415940}
-  _camera: {fileID: 519420031}
-  _background: {fileID: 0}
-  _buttons:
-  - {fileID: 315236758}
-  - {fileID: 51014505}
-  - {fileID: 1079348577}
-  - {fileID: 2127366302}
 --- !u!1 &315236755
 GameObject:
   m_ObjectHideFlags: 0
