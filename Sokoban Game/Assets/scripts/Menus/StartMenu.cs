@@ -9,6 +9,7 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private Text _skinText;
     [SerializeField] private CanvasGroup _mainMenu;
     [SerializeField] private CanvasGroup _levelMenu;
+    [SerializeField] private CanvasGroup _instructions;
 
     [Header("Data")] [SerializeField] private Levels _levels;
     [SerializeField] private Skins _skins;
@@ -30,6 +31,7 @@ public class StartMenu : MonoBehaviour
             HideCanvas(_levelMenu);
         else
             ShowCanvas(_levelMenu);
+        _levelText.text = _levels.Set.Name;
     }
 
     public void MainMenu()
@@ -40,12 +42,20 @@ public class StartMenu : MonoBehaviour
             ShowCanvas(_mainMenu);
     }
 
+    public void ShowInstructions()
+    {
+        MainMenu();
+        if (_instructions.blocksRaycasts)
+            HideCanvas(_instructions);
+        else
+            ShowCanvas(_instructions); 
+    }
+
     private void Start()
     {
-        _levelText.text = "level set"; //_levels.Set.Name;
         _skinText.text = _skins.CurrentSkin().SkinName;
-        LevelMenu();
-        ShowCanvas(_mainMenu);
+        HideCanvas(_levelMenu);
+        HideCanvas(_instructions);
     }
 
     private IEnumerator LoadGame()

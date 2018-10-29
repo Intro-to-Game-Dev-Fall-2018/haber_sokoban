@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
 	
 	private void MoveCamera(LevelData data)
 	{
-		var pos = new Vector3(data.width / 2 -.5f, -data.height/2 +.5f,-10);
+		var pos = new Vector3(data.width / 2 -.5f, -data.height/2 +.75f,-10);
 		var size = data.height > data.width ? data.height : data.width;
 
 		_camera.orthographicSize = size/2;

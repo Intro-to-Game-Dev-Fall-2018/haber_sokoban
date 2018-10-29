@@ -7,11 +7,16 @@ public class GuiManager : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI _score;
 	[SerializeField] private TextMeshProUGUI _level;
 	[SerializeField] private TextMeshProUGUI _levelInfo;
+	[SerializeField] private Canvas GuiButtons;
+	
+	[Header("Options")]
 	[SerializeField] private bool _showLevelInfo;
+	[SerializeField] private bool _showGuiButtons;
 
 	private void Start()
 	{
 		LevelManager.onLevelUpdate.AddListener(LevelUpdate);
+		if (!_showGuiButtons) GuiButtons.gameObject.active = false;
 	}
 		
 	private void Update ()
