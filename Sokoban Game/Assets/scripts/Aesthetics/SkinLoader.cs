@@ -29,10 +29,6 @@ public class SkinLoader : MonoBehaviour
         if (_background != null)
             _background.color = skin.Background;
 
-        if (_color != null)
-            foreach (var i in _color)
-                i.color = skin.TextColor;
-
         if (_menu != null)
         {
             foreach (var text in _menu.GetComponentsInChildren<Text>())
@@ -40,6 +36,10 @@ public class SkinLoader : MonoBehaviour
             foreach (var g in _menu.GetComponentsInChildren<Button>())
                 g.gameObject.GetComponent<Graphic>().color = skin.ButtonColor;
         }
+        
+        if (_color != null)
+            foreach (var i in _color)
+                i.color = skin.TextColor;
 
         if (_titles != null)
             foreach (var title in _titles)

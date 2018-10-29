@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-
-public class GameState : ScriptableObject
+﻿
+public class GameState 
 {
     
     public int moves;

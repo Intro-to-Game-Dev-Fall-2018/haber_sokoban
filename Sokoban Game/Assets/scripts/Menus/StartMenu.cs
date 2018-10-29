@@ -1,55 +1,16 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StartMenu : MonoBehaviour
 {
-    [Header("Menu")] [SerializeField] private Text _levelText;
+    [Header("Menu")]
     [SerializeField] private Text _skinText;
     [SerializeField] private CanvasGroup _mainMenu;
     [SerializeField] private CanvasGroup _levelMenu;
     [SerializeField] private CanvasGroup _instructions;
 
-    [Header("Data")] [SerializeField] private Levels _levels;
+    [Header("Data")]
     [SerializeField] private Skins _skins;
-
-    public void startGame()
-    {
-        StartCoroutine(LoadGame());
-    }
-
-    public void cycleSkins()
-    {
-        _skinText.text = _skins.NextSkin().SkinName;
-    }
-
-    public void LevelMenu()
-    {
-        MainMenu();
-        if (_levelMenu.blocksRaycasts)
-            HideCanvas(_levelMenu);
-        else
-            ShowCanvas(_levelMenu);
-        _levelText.text = _levels.Set.Name;
-    }
-
-    public void MainMenu()
-    {
-        if (_mainMenu.blocksRaycasts)
-            HideCanvas(_mainMenu);
-        else
-            ShowCanvas(_mainMenu);
-    }
-
-    public void ShowInstructions()
-    {
-        MainMenu();
-        if (_instructions.blocksRaycasts)
-            HideCanvas(_instructions);
-        else
-            ShowCanvas(_instructions); 
-    }
 
     private void Start()
     {
@@ -58,21 +19,47 @@ public class StartMenu : MonoBehaviour
         HideCanvas(_instructions);
     }
 
-    private IEnumerator LoadGame()
+    private void Update()
     {
-        yield return new WaitForSeconds(.1f);
-        var op = SceneManager.LoadSceneAsync("game", LoadSceneMode.Additive);
-        SceneManager.UnloadSceneAsync("menu");
-        yield return op;
+        if (Input.GetButton("Cancel"))
+            MainMenu();
     }
 
-    private void HideCanvas(CanvasGroup canvas)
+    //public functions
+
+    public void cycleSkins()
+    {
+        _skinText.text = _skins.NextSkin().SkinName;
+    }
+
+    public void LevelMenu()
+    {
+        HideCanvas(_mainMenu);
+        HideCanvas(_instructions);
+        ShowCanvas(_levelMenu);
+    }
+
+    public void MainMenu()
+    {
+        HideCanvas(_levelMenu);
+        HideCanvas(_instructions);
+        ShowCanvas(_mainMenu);
+    }
+
+    public void ShowInstructions()
+    {
+        HideCanvas(_levelMenu);
+        HideCanvas(_mainMenu);
+        ShowCanvas(_instructions); 
+    }
+    
+    private static void HideCanvas(CanvasGroup canvas)
     {
         canvas.alpha = 0f;
         canvas.blocksRaycasts = false;
     }
 
-    private void ShowCanvas(CanvasGroup canvas)
+    private static void ShowCanvas(CanvasGroup canvas)
     {
         canvas.alpha = 1f;
         canvas.blocksRaycasts = true;

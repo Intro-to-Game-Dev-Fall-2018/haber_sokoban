@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca760018448014c698e008385463c989, type: 3}
   m_Name: Levels
   m_EditorClassIdentifier: 
-  resetOnStart: 0
+  resetOnStart: 1
   _sets:
   - _name: Nintendo
     _author: White Rabbit

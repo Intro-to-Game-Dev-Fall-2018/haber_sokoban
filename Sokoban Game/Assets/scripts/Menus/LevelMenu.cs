@@ -19,13 +19,7 @@ public class LevelMenu : MonoBehaviour
 			var newButton = Instantiate(_buttonPrefab,transform);
 			var sampleButton = newButton.GetComponent<LevelSetButton>();
 			sampleButton.Setup(set,_levels);
-			sampleButton.buttonComponent.onClick.AddListener(CloseMenu);
 		}
-	}
-
-	private void CloseMenu()
-	{
-		_menu.LevelMenu();
 	}
 
 }

@@ -6,8 +6,7 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance;
 	
-	[HideInInspector] public GameState State;
-	
+	public GameState State;
 	public GameSettings Settings;
 	
 	[SerializeField] private LevelManager _levelManager;
@@ -22,7 +21,7 @@ public class GameManager : MonoBehaviour
 			Destroy(gameObject);
 
 		_active = true;
-		State = ScriptableObject.CreateInstance<GameState>();
+		State = new GameState();
 	}
 
 	private void Update()
@@ -35,8 +34,6 @@ public class GameManager : MonoBehaviour
 			_levelManager.ResetLevel();
 		else if (Input.GetButton("Undo")) 
 			Undo();
-		else if (Input.GetButton("Cancel"))
-			loadMenu();
 	}
 	
 	//public functions
@@ -48,7 +45,7 @@ public class GameManager : MonoBehaviour
 
 	public void loadMenu()
 	{
-		StartCoroutine(MenuLoader());
+		StartCoroutine(Loader.LoadMenu());
 	}
 
 	public void DisableForMove()
@@ -57,14 +54,6 @@ public class GameManager : MonoBehaviour
 	}
 
 	//Coroutines
-	private IEnumerator MenuLoader()
-	{
-		_active = false;
-		var op = SceneManager.LoadSceneAsync("menu", LoadSceneMode.Additive);
-		SceneManager.UnloadSceneAsync("game");
-		yield return op;
-	}
-	
 	private IEnumerator PassLevel()
 	{
 		_active = false;

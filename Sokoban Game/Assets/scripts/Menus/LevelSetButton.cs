@@ -30,6 +30,7 @@ public class LevelSetButton : MonoBehaviour {
 	public void HandleClick()
 	{
 		_levels.Set = _set;
+		StartCoroutine(Loader.LoadGame());
 	}
 
 }

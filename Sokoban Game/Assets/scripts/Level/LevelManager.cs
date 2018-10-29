@@ -29,6 +29,8 @@ public class LevelManager : MonoBehaviour
     
     private void LoadLevel(int level)
     {
+        if (level > _levels.Length) level = 0;
+
         GameManager.Instance.State.NewLevel();
         var lines = _levels[level].Split('\n');
         var data = _loader.LoadLevel(lines);
