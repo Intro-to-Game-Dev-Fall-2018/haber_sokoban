@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba30117c51c79465a9887fce9ee0aeee, type: 3}
-  m_Name: _skins
+  m_Name: Skins
   m_EditorClassIdentifier: 
   _skins:
   - SkinName: Clone
@@ -23,7 +23,7 @@ MonoBehaviour:
   - SkinName: Goth
     Box: {fileID: 1055197187763128, guid: 2252c802ff2ed4bbe9514c8efdb5632f, type: 2}
     Goal: {fileID: 1575612759863368, guid: 2252c802ff2ed4bbe9514c8efdb5632f, type: 2}
-    Player: {fileID: 1623700914435500, guid: 77c81cd84da634c788d70c8ce97fa79f, type: 2}
+    Player: {fileID: 1033089848099200, guid: 2252c802ff2ed4bbe9514c8efdb5632f, type: 2}
     Wall: {fileID: 1763821411736872, guid: 2252c802ff2ed4bbe9514c8efdb5632f, type: 2}
     Background: {r: 0.20754719, g: 0.057760775, b: 0.20599043, a: 1}
     TextColor: {r: 0.45882356, g: 0.26666668, b: 0.5294118, a: 1}

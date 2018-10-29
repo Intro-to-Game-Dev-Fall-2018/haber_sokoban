@@ -18,7 +18,11 @@ public class Levels : ScriptableObject
 
 	public Set Set
 	{
-		get { return set.Name.Length>0 ? set : set = _sets[0]; }
+		get
+		{
+			if (set.Name.Length == 0) set = _sets[0];
+			return set;
+		}
 		set { set = value; }
 	}
 

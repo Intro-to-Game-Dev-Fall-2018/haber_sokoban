@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(MovingObject))]
 public class PlayerController : MonoBehaviour
@@ -10,11 +11,14 @@ public class PlayerController : MonoBehaviour
 	
 	private MovingObject _motor;
 	private bool _canMove;
+
+	public static UnityEvent PlayerMoves;
 	
 	private void Start()
 	{
 		_motor = GetComponent<MovingObject>();
 		_canMove = true;
+		if (PlayerMoves == null) PlayerMoves = new UnityEvent();
 	}
 
 	private void move(int x,int y)
@@ -27,6 +31,7 @@ public class PlayerController : MonoBehaviour
 		if (result == MOVE.FAIL )
 			return;
 		
+		PlayerMoves.Invoke();
 		_animator.Advance(result,direction);
 
 		GameManager.Instance.State.Move();

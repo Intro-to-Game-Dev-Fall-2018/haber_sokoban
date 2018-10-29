@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
 	public static GameManager Instance;
 	
 	[HideInInspector] public GameState State;
@@ -52,6 +51,11 @@ public class GameManager : MonoBehaviour
 		StartCoroutine(MenuLoader());
 	}
 
+	public void DisableForMove()
+	{
+		StartCoroutine(DisableForMoveRoutine());
+	}
+
 	//Coroutines
 	private IEnumerator MenuLoader()
 	{
@@ -78,6 +82,13 @@ public class GameManager : MonoBehaviour
 		foreach (var obj in FindObjectsOfType<MovingObject>())
 			obj.Undo(Instance.State.moves);
 		yield return new WaitForSecondsRealtime(Settings.undoDelay);
+		_active = true;
+	}
+	
+	private IEnumerator DisableForMoveRoutine()
+	{
+		_active = false;
+		yield return new WaitForSecondsRealtime(Settings.moveTime);
 		_active = true;
 	}
 
