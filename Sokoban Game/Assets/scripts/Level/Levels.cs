@@ -8,14 +8,13 @@ public class Levels : ScriptableObject
 	[SerializeField] private bool resetOnStart;
 	[SerializeField] private Set[] _sets;
 
-	private int current;
+	public Set Set { get; set; }
 
 	private void OnEnable()
 	{
 		if (resetOnStart) ResetProgress();
+		Set = _sets[0];
 	}
-
-	public Set Set { get; set; }
 
 	public IEnumerable<Set> Sets {get { return _sets;  }}
 
@@ -41,12 +40,7 @@ public class Set
 	
 	private bool _complete;
 	private int _size;
-	
-	public TextAsset File
-	{
-		get { return _file; }
-	}
-	
+
 	public string Name
 	{
 		get { return _name; }
@@ -57,21 +51,22 @@ public class Set
 		get { return _author; }
 	}
 	
-	public string Description
-	{
-		get { return _description; }
-	}
-	
 	public int Progress
 	{
 		get { return _progress; }
 		set
 		{
 			_progress = value;
-			if (_progress == GetSize())
-				_complete = true;
+			if (_progress != GetSize()) return;
 			
+			_complete = true;
+			_progress = 0;
 		}
+	}
+
+	public void FinishLevel(int score)
+	{
+		Progress++;
 	}
 
 	public bool Complete
@@ -88,7 +83,9 @@ public class Set
 
 	public int GetSize()
 	{
-		if ( _size==0 ) _size = GetLevels().Length;
+		if (_size != 0) return _size;
+		
+		_size = GetLevels().Length;
 		return _size;
 	}
 	

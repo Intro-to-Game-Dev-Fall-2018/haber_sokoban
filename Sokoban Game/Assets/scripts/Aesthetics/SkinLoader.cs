@@ -23,6 +23,9 @@ public class SkinLoader : MonoBehaviour
     // ReSharper disable once InvertIf
     private void onChangeSkin(Skin skin)
     {
+
+        
+
         if (_camera != null)
             _camera.backgroundColor = skin.Background;
 
@@ -34,7 +37,12 @@ public class SkinLoader : MonoBehaviour
             foreach (var text in _menu.GetComponentsInChildren<Text>())
                 text.color = skin.TextColor;
             foreach (var g in _menu.GetComponentsInChildren<Button>())
+            {
+                var block = g.colors;
+                block.highlightedColor = new Color(.3f,.3f,.3f,1f);
+                g.colors = block;
                 g.gameObject.GetComponent<Graphic>().color = skin.ButtonColor;
+            }
         }
         
         if (_color != null)

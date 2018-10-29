@@ -1,5 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class GuiManager : MonoBehaviour
 {
@@ -8,9 +10,19 @@ public class GuiManager : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI _level;
 	[SerializeField] private TextMeshProUGUI _levelInfo;
 	[SerializeField] private CanvasGroup _pauseMenu;
+	[SerializeField] private GameObject _defaultActive;
 	
 	[Header("Options")]
 	[SerializeField] private bool _showLevelInfo;
+
+	public static UnityEvent OnPause;
+	public static UnityEvent OnUnPause;
+
+	private void Awake()
+	{
+		if (OnPause==null) OnPause = new UnityEvent();
+		if (OnUnPause==null) OnUnPause = new UnityEvent();
+	}
 
 	private void Start()
 	{
@@ -24,12 +36,21 @@ public class GuiManager : MonoBehaviour
 		_levelInfo.text = LevelInfo();
 
 		if (Input.GetButton("Cancel"))
-			ShowCanvas(_pauseMenu);
+			Pause();
 	}
 
 	public void UnPause()
 	{
+		OnUnPause.Invoke();
 		HideCanvas(_pauseMenu);
+		EventSystem.current.SetSelectedGameObject(null);
+	}
+
+	public void Pause()
+	{
+		OnPause.Invoke();
+		ShowCanvas(_pauseMenu);
+		EventSystem.current.SetSelectedGameObject(_defaultActive);
 	}
 
 	private string LevelInfo()

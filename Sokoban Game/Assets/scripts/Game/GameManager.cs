@@ -32,10 +32,8 @@ public class GameManager : MonoBehaviour
 			StartCoroutine(PassLevel());
 		else if (Input.GetButton("Reset")) 
 			_levelManager.ResetLevel();
-		else if (Input.GetButton("Undo")) 
-			Undo();
 	}
-	
+
 	//public functions
 	public void Undo()
 	{
@@ -46,11 +44,6 @@ public class GameManager : MonoBehaviour
 	public void loadMenu()
 	{
 		StartCoroutine(Loader.LoadMenu());
-	}
-
-	public void DisableForMove()
-	{
-		StartCoroutine(DisableForMoveRoutine());
 	}
 
 	//Coroutines
@@ -66,18 +59,13 @@ public class GameManager : MonoBehaviour
 	
 	private IEnumerator UndoRoutine()
 	{
+		yield return new WaitForEndOfFrame();
+		if (!_active) yield break;
 		_active = false;
 		Instance.State.Undo();
 		foreach (var obj in FindObjectsOfType<MovingObject>())
 			obj.Undo(Instance.State.moves);
 		yield return new WaitForSecondsRealtime(Settings.undoDelay);
-		_active = true;
-	}
-	
-	private IEnumerator DisableForMoveRoutine()
-	{
-		_active = false;
-		yield return new WaitForSecondsRealtime(Settings.moveTime);
 		_active = true;
 	}
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class StartMenu : MonoBehaviour
@@ -44,6 +45,7 @@ public class StartMenu : MonoBehaviour
         HideCanvas(_levelMenu);
         HideCanvas(_instructions);
         ShowCanvas(_mainMenu);
+        EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
     }
 
     public void ShowInstructions()
@@ -57,11 +59,13 @@ public class StartMenu : MonoBehaviour
     {
         canvas.alpha = 0f;
         canvas.blocksRaycasts = false;
+        canvas.interactable = false;
     }
 
     private static void ShowCanvas(CanvasGroup canvas)
     {
         canvas.alpha = 1f;
         canvas.blocksRaycasts = true;
+        canvas.interactable = true;
     }
 }

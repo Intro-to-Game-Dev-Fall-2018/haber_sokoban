@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(MovingObject))]
 public class PlayerController : MonoBehaviour
@@ -12,16 +10,16 @@ public class PlayerController : MonoBehaviour
 	private MovingObject _motor;
 	private bool _canMove;
 
-	public static UnityEvent PlayerMoves;
-	
+
 	private void Start()
 	{
 		_motor = GetComponent<MovingObject>();
 		_canMove = true;
-		if (PlayerMoves == null) PlayerMoves = new UnityEvent();
+		GuiManager.OnPause.AddListener(Disable);
+		GuiManager.OnUnPause.AddListener(Enable);
 	}
 
-	private void move(int x,int y)
+	private void Move(int x,int y)
 	{
 		if (!_canMove) return;
 		
@@ -31,15 +29,23 @@ public class PlayerController : MonoBehaviour
 		if (result == MOVE.FAIL )
 			return;
 		
-		PlayerMoves.Invoke();
 		_animator.Advance(result,direction);
 
 		GameManager.Instance.State.Move();
-		StartCoroutine(moveTimer());
+		StartCoroutine(MoveTimer());
 	}
 
 	private void Update()
 	{
+		if (!_canMove) return;
+
+		if (Input.GetButton("Undo"))
+		{
+			GameManager.Instance.Undo();
+			StartCoroutine(MoveTimer());
+			return;
+		}
+		
 		var x = (int) Input.GetAxis("Horizontal");
 		var y = (int) Input.GetAxis("Vertical");
 
@@ -47,10 +53,20 @@ public class PlayerController : MonoBehaviour
 			x = 0;
 
 		if (x != 0 || y != 0)
-			move(x,y);
+			Move(x,y);
+	}
+
+	private void Disable()
+	{
+		_canMove = false;
+	}
+
+	private void Enable()
+	{
+		_canMove = true;
 	}
 	
-	private IEnumerator moveTimer()
+	private IEnumerator MoveTimer()
 	{
 		_canMove = false;
 		yield return new WaitForSeconds(GameManager.Instance.Settings.moveTime);

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
@@ -10,27 +9,28 @@ public class LevelManager : MonoBehaviour
     public static LevelUpdateEvent onLevelUpdate;
     
     private string[] _levels;
-    private int currentLevel;
     private Set _set;
 
     public void ResetLevel()
     {
         GameManager.Instance.State.ResetLevel();
-        LoadLevel(currentLevel);
+        LoadLevel(_set.Progress);
+    }
+
+    public void SkipLevel()
+    {
+        _set.Progress++;
+        LoadLevel(_set.Progress);
     }
     
     public void NextLevel()
     {
-        if (currentLevel++ > _levels.Length) return;
-        _set.Progress = currentLevel;
-        currentLevel = currentLevel % _levels.Length;
-        LoadLevel(currentLevel);
+        _set.FinishLevel(GameManager.Instance.State.moves);
+        LoadLevel(_set.Progress);
     }
     
     private void LoadLevel(int level)
     {
-        if (level > _levels.Length) level = 0;
-
         GameManager.Instance.State.NewLevel();
         var lines = _levels[level].Split('\n');
         var data = _loader.LoadLevel(lines);
@@ -43,11 +43,10 @@ public class LevelManager : MonoBehaviour
         
         _set = _levelsAsset.Set;
         _levels = _set.GetLevels();
-        currentLevel = _set.Progress;
     }
 
     private void Start()
     {
-        ResetLevel();
+        LoadLevel(_set.Progress);
     }
 }
