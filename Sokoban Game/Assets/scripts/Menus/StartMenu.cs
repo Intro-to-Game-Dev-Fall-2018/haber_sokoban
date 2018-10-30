@@ -35,6 +35,8 @@ public class StartMenu : MonoBehaviour
 
     public void LevelMenu()
     {
+        EventSystem.current.SetSelectedGameObject(null);
+
         HideCanvas(_mainMenu);
         HideCanvas(_instructions);
         ShowCanvas(_levelMenu);
