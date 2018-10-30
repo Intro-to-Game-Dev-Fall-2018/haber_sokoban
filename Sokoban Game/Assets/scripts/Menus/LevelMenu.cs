@@ -1,34 +1,30 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
+using UnityEngine.UI.Extensions;
 
 public class LevelMenu : MonoBehaviour
 {
 	
 	[SerializeField] private Levels _levels;
 	[SerializeField] private GameObject _buttonPrefab;
+	[SerializeField] private UIInfiniteScroll _scroll;
 	
 	private GameObject _first;
 
-	private void Start()
+	private void Awake()
 	{
 		AddButtons();
+		_scroll.Init();
 	}
 	
 	private void AddButtons()
 	{
-		Button up = null;
-		Button down = null;
 		foreach (var set in _levels.Sets)
 		{
 			var newButton = Instantiate(_buttonPrefab,transform);
 			var sampleButton = newButton.GetComponent<LevelSetButton>();
 			sampleButton.Setup(set,_levels);
 			
-			var button = newButton.GetComponent<Button>();
-			var nav = button.navigation;
-
-
 			if (_first == null) _first = newButton;
 		}
 	}

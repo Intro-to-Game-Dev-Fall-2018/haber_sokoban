@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -41,9 +42,9 @@ public class GuiManager : MonoBehaviour
 
 	public void UnPause()
 	{
-		OnUnPause.Invoke();
 		HideCanvas(_pauseMenu);
 		EventSystem.current.SetSelectedGameObject(null);
+		StartCoroutine(unPauseDelay());
 	}
 
 	public void Pause()
@@ -60,6 +61,12 @@ public class GuiManager : MonoBehaviour
 		       "\nGoals: "+GameManager.Instance.State.goalCount+
 		       "\nDone: "+GameManager.Instance.State.boxesOnGoals+
 		       "\nTotal: "+GameManager.Instance.State.totalMoves;
+	}
+
+	private IEnumerator unPauseDelay()
+	{
+		yield return new WaitForSecondsRealtime(.5f);
+		OnUnPause.Invoke();
 	}
 
 	private void LevelUpdate(LevelData data)

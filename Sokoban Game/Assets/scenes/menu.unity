@@ -542,6 +542,8 @@ GameObject:
   - component: {fileID: 349049043}
   - component: {fileID: 349049042}
   - component: {fileID: 349049041}
+  - component: {fileID: 349049044}
+  - component: {fileID: 349049045}
   m_Layer: 0
   m_Name: Scroll View
   m_TagString: Untagged
@@ -566,7 +568,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 400, y: 300}
+  m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &349049041
 MonoBehaviour:
@@ -616,8 +618,8 @@ MonoBehaviour:
   m_Content: {fileID: 446687484}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
-  m_Elasticity: 0.1
+  m_MovementType: 2
+  m_Elasticity: 0.5
   m_Inertia: 0
   m_DecelerationRate: 0.135
   m_ScrollSensitivity: 2
@@ -633,6 +635,33 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &349049044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 349049039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f7cf614c5e4d412e84d4b0c80803d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollDirection: 0
+  scrollSpeed: 5
+  cancelScrollOnInput: 0
+  cancelScrollKeycodes: 
+--- !u!114 &349049045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 349049039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c0692a079424d2bba3db58bfcdb03a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitByUser: 1
 --- !u!1 &446687483
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,7 +695,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00002833407}
+  m_AnchoredPosition: {x: 0, y: 0.000023958371}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &446687485
@@ -705,6 +734,7 @@ MonoBehaviour:
   _levels: {fileID: 11400000, guid: c9387c78197834188bb82d34e94faa87, type: 2}
   _buttonPrefab: {fileID: 1813580690832136, guid: 502b553aee57f426db166a411465d6a6,
     type: 2}
+  _scroll: {fileID: 349049045}
 --- !u!114 &446687487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1107,10 +1137,10 @@ RectTransform:
   m_Father: {fileID: 248313088}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 800, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &915057182
 CanvasGroup:

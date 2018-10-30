@@ -16,7 +16,7 @@ public class Levels : ScriptableObject
 		Set = _sets[0];
 	}
 
-	public IEnumerable<Set> Sets {get { return _sets;  }}
+	public Set[] Sets {get { return _sets;  }}
 
 	public void ResetProgress()
 	{
