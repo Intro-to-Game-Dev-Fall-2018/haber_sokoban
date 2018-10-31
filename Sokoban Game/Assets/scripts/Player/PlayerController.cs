@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 	private MovingObject _motor;
 	private bool _canMove;
 	private bool _canUndo;
+	private bool _gamePaused;
 
 
 	private void Start()
@@ -16,12 +17,13 @@ public class PlayerController : MonoBehaviour
 		_motor = GetComponent<MovingObject>();
 		_canMove = true;
 		_canUndo = true;
-		GuiManager.OnPause.AddListener(Disable);
-		GuiManager.OnUnPause.AddListener(Enable);
+		PauseMenu.OnPause.AddListener(Pause);
+		PauseMenu.OnUnPause.AddListener(UnPause);
 	}
 
 	private void Update()
 	{
+		if (_gamePaused) return;
 		if (!_canMove) return;
 
 		var x = (int) Input.GetAxis("Horizontal");
@@ -65,16 +67,14 @@ public class PlayerController : MonoBehaviour
 		StartCoroutine(MoveTimer());
 	}
 
-	private void Disable()
+	private void Pause()
 	{
-		_canMove = false;
-		GameManager.Instance.Undo();
-		StartCoroutine(MoveTimer());
+		_gamePaused = true;
 	}
 
-	private void Enable()
+	private void UnPause()
 	{
-		_canMove = true;
+		_gamePaused = false;
 	}
 	
 	private IEnumerator MoveTimer()

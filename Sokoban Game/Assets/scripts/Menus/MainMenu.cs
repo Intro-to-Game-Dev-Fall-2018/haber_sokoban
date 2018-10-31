@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class StartMenu : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
     [Header("Menu")]
     [SerializeField] private Text _skinText;
@@ -23,7 +23,7 @@ public class StartMenu : MonoBehaviour
     private void Update()
     {
         if (_showInstructions && Input.anyKey)
-            MainMenu();
+            ShowMainMenu();
     }
 
     //public functions
@@ -33,7 +33,7 @@ public class StartMenu : MonoBehaviour
         _skinText.text = _skins.NextSkin().SkinName;
     }
     
-    public void MainMenu()
+    public void ShowMainMenu()
     {
         _showInstructions = false;
         HideCanvas(_instructions);

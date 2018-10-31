@@ -7,4 +7,8 @@ public class GameSettings : ScriptableObject
 	public float moveTime = .5f;
 	public float waitAfterMap = 2f;
 	public float undoDelay = .5f;
+
+	[Header("Scene Transitions")] 
+	public float delayBeforeTransition = 1f;
+	public float transitionDuration = 1f;
 }
