@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +18,7 @@ public class LevelTransition : MonoBehaviour
 	
 	private void Transition(LevelData data)
 	{
+		StopCoroutine(AnimateTransition());
 		_text.text = data.LevelName;
 		StartCoroutine(AnimateTransition());
 	}
@@ -27,19 +27,24 @@ public class LevelTransition : MonoBehaviour
 	{
 		var imageColor = _image.color;
 		var textColor = _text.color;
-		textColor.a = 1;
-		imageColor.a = 1;
+		var alpha = 1f;
+		
+		textColor.a = alpha;
+		imageColor.a = alpha;
 		_image.color = imageColor;
 		_text.color = textColor;
+		
 		yield return new WaitForSecondsRealtime(GameData.Settings.delayBeforeTransition);
 
 		for (var t = 0.0f; t < 1.0f; t += Time.deltaTime / duration)
 		{
-			imageColor.a = Mathf.Lerp(imageColor.a, 0, t);
-			textColor.a = Mathf.Lerp(textColor.a, 0, t);
+			alpha =  Mathf.Lerp(alpha, 0, t);
+			imageColor.a = alpha;
+			textColor.a = alpha;
 			_image.color = imageColor;
 			_text.color = textColor;
 			yield return null;
+			if (alpha < float.Epsilon) yield break;
 		}
 	}
 	

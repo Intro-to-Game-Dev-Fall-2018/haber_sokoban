@@ -15,4 +15,4 @@ MonoBehaviour:
   waitAfterMap: 1.5
   undoDelay: 0.4
   delayBeforeTransition: 3
-  transitionDuration: 5
+  transitionDuration: 4
