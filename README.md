@@ -3,10 +3,10 @@ Welcome to Sokoban, a game where you push boxes onto goals.
 
 ## Controls
 ```
-WASD - move
-R - reset
-E - Undo
-esc - Menu
+Arrow Keys - move
+Z - undo
+X - select
+C - menu
 ```
 
 ## WebGL Builds
