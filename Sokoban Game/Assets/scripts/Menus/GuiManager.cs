@@ -78,11 +78,13 @@ public class GuiManager : MonoBehaviour
 	{
 		canvas.alpha = 0f;
 		canvas.blocksRaycasts = false;
+		canvas.interactable = false;
 	}
 
 	private static void ShowCanvas(CanvasGroup canvas)
 	{
 		canvas.alpha = 1f;
 		canvas.blocksRaycasts = true;
+		canvas.interactable = true;
 	}
 }

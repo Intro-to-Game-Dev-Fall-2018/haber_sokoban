@@ -4,21 +4,43 @@ using UnityEngine;
 [RequireComponent(typeof(MovingObject))]
 public class PlayerController : MonoBehaviour
 {
-
 	[SerializeField] private PlayerAnimator _animator;
 	
 	private MovingObject _motor;
 	private bool _canMove;
+	private bool _canUndo;
 
 
 	private void Start()
 	{
 		_motor = GetComponent<MovingObject>();
 		_canMove = true;
+		_canUndo = true;
 		GuiManager.OnPause.AddListener(Disable);
 		GuiManager.OnUnPause.AddListener(Enable);
 	}
 
+	private void Update()
+	{
+		if (!_canMove) return;
+
+		var x = (int) Input.GetAxis("Horizontal");
+		var y = (int) Input.GetAxis("Vertical");
+
+		if (y != 0)
+			x = 0;
+
+		if (x != 0 || y != 0)
+		{
+			Move(x,y);
+			return;
+		}
+		
+		if (Input.GetButton("Undo"))
+			Undo();
+	
+	}
+	
 	private void Move(int x,int y)
 	{
 		if (!_canMove) return;
@@ -35,30 +57,19 @@ public class PlayerController : MonoBehaviour
 		StartCoroutine(MoveTimer());
 	}
 
-	private void Update()
+	private void Undo()
 	{
-		if (!_canMove) return;
-
-		if (Input.GetButton("Undo"))
-		{
-			GameManager.Instance.Undo();
-			StartCoroutine(MoveTimer());
-			return;
-		}
+		if (!_canUndo) return;
 		
-		var x = (int) Input.GetAxis("Horizontal");
-		var y = (int) Input.GetAxis("Vertical");
-
-		if (y != 0)
-			x = 0;
-
-		if (x != 0 || y != 0)
-			Move(x,y);
+		GameManager.Instance.Undo();
+		StartCoroutine(MoveTimer());
 	}
 
 	private void Disable()
 	{
 		_canMove = false;
+		GameManager.Instance.Undo();
+		StartCoroutine(MoveTimer());
 	}
 
 	private void Enable()
@@ -69,8 +80,11 @@ public class PlayerController : MonoBehaviour
 	private IEnumerator MoveTimer()
 	{
 		_canMove = false;
+		_canUndo = false;
 		yield return new WaitForSeconds(GameData.Settings.moveTime);
 		_canMove = true;
+		yield return  new WaitForEndOfFrame();
+		_canUndo = true;
 	}
 	
 }

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI.Extensions;
 
 public class LevelMenu : MonoBehaviour
@@ -26,13 +25,7 @@ public class LevelMenu : MonoBehaviour
 			var newButton = Instantiate(_buttonPrefab,_content);
 			var sampleButton = newButton.GetComponent<LevelSetButton>();
 			sampleButton.Setup(set);
-			
 		}
-	}
-
-	public void SelectCurrent()
-	{
-		Loader.LoadGame();
 	}
 
 }
