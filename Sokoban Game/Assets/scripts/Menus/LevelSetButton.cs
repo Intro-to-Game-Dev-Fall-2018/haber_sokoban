@@ -10,12 +10,12 @@ public class LevelSetButton : MonoBehaviour {
 	
 	public Image iconImage;
 	
-	private static Set _set;
-	private Levels _levels;
+	private Set _set;
+	private static Levels _levels;
 
 	private void OnEnable()
 	{
-		if (_levels == null) _levels = GameData.Levels;
+		_levels = GameData.Levels;
 		buttonComponent.onClick.AddListener(HandleClick);
 	}
 
@@ -30,6 +30,7 @@ public class LevelSetButton : MonoBehaviour {
 	public void HandleClick()
 	{
 		_levels.Set = _set;
+		print(_set.Name);
 		StartCoroutine(Loader.LoadGame());
 	}
 

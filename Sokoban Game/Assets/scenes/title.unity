@@ -113,6 +113,39 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &2432360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2432361}
+  m_Layer: 0
+  m_Name: Title Dest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2432361
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2432360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1155272682}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 150}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &340725668
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,6 +261,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0c4123fdb2f4ff69c38f469ad692c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: {fileID: 1280679438}
+  _destination: {fileID: 2432361}
+  _press2Start: {fileID: 1455073270}
 --- !u!114 &352627520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,9 +275,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d665afe1a1fb4ab484856e45fe65430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _menu: {fileID: 0}
-  _camera: {fileID: 0}
-  _titles: []
+  _menu: {fileID: 1155272678}
+  _titles:
+  - {fileID: 1280679439}
   _bgColor:
   - {fileID: 340725670}
   _textColor: []
@@ -318,6 +354,7 @@ GameObject:
   - component: {fileID: 1155272681}
   - component: {fileID: 1155272680}
   - component: {fileID: 1155272679}
+  - component: {fileID: 1155272683}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -394,6 +431,7 @@ RectTransform:
   m_Children:
   - {fileID: 340725669}
   - {fileID: 1280679438}
+  - {fileID: 2432361}
   - {fileID: 1455073269}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -403,6 +441,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1155272683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1155272678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
 --- !u!1 &1201149550
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,8 +565,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -98.4375}
-  m_SizeDelta: {x: 300, y: 100}
+  m_AnchoredPosition: {x: 0, y: 100}
+  m_SizeDelta: {x: 800, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1280679439
 MonoBehaviour:
@@ -556,8 +615,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -641,7 +700,7 @@ GameObject:
   - component: {fileID: 1455073271}
   - component: {fileID: 1455073270}
   m_Layer: 0
-  m_Name: Text
+  m_Name: Press 2 Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -658,7 +717,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1155272682}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -686,10 +745,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 2f85847e379164b469f8c81da5933f31, type: 3}
-    m_FontSize: 14
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 7
     m_AlignByGeometry: 0

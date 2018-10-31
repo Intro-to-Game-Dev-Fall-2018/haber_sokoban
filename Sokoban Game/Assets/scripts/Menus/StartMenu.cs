@@ -7,7 +7,6 @@ public class StartMenu : MonoBehaviour
     [Header("Menu")]
     [SerializeField] private Text _skinText;
     [SerializeField] private CanvasGroup _mainMenu;
-    [SerializeField] private CanvasGroup _levelMenu;
     [SerializeField] private CanvasGroup _instructions;
 
     private Skins _skins;
@@ -16,7 +15,6 @@ public class StartMenu : MonoBehaviour
     {
         _skins = GameData.Skins;
         _skinText.text = _skins.CurrentSkin().SkinName;
-        HideCanvas(_levelMenu);
         HideCanvas(_instructions);
     }
 
@@ -32,19 +30,9 @@ public class StartMenu : MonoBehaviour
     {
         _skinText.text = _skins.NextSkin().SkinName;
     }
-
-    public void LevelMenu()
-    {
-        EventSystem.current.SetSelectedGameObject(null);
-
-        HideCanvas(_mainMenu);
-        HideCanvas(_instructions);
-        ShowCanvas(_levelMenu);
-    }
-
+    
     public void MainMenu()
     {
-        HideCanvas(_levelMenu);
         HideCanvas(_instructions);
         ShowCanvas(_mainMenu);
         EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
@@ -52,7 +40,6 @@ public class StartMenu : MonoBehaviour
 
     public void ShowInstructions()
     {
-        HideCanvas(_levelMenu);
         HideCanvas(_mainMenu);
         ShowCanvas(_instructions); 
     }

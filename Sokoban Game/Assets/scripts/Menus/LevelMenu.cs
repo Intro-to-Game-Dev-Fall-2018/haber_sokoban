@@ -9,7 +9,6 @@ public class LevelMenu : MonoBehaviour
 	[SerializeField] private GameObject _buttonPrefab;
 	[SerializeField] private UI_InfiniteScroll _scroll;
 	
-	private GameObject _first;
 	private Levels _levels;
 
 	private void Awake()
@@ -28,13 +27,7 @@ public class LevelMenu : MonoBehaviour
 			var sampleButton = newButton.GetComponent<LevelSetButton>();
 			sampleButton.Setup(set);
 			
-			if (_first == null) _first = newButton;
 		}
-	}
-
-	public void setActive()
-	{
-		EventSystem.current.SetSelectedGameObject(_first);
 	}
 
 }
