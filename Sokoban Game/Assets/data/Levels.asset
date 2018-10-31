@@ -11,43 +11,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca760018448014c698e008385463c989, type: 3}
   m_Name: Levels
   m_EditorClassIdentifier: 
-  resetOnStart: 1
+  resetOnStart: 0
   _sets:
+  - _name: Tutorial
+    _author: White Rabbit
+    _file: {fileID: 4900000, guid: 37c3233f76aa4c50bd6ba8ffc0550a79, type: 3}
+    _description: 
+    _progress: 0
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   - _name: Nintendo
     _author: White Rabbit
     _file: {fileID: 4900000, guid: a0512dd82a02d434ebfc24193436c43b, type: 3}
-    _difficulty: 0
     _description: 
     _progress: 0
-  - _name: Easy
-    _author: Benjamin Haber
-    _file: {fileID: 4900000, guid: 37c3233f76aa4c50bd6ba8ffc0550a79, type: 3}
-    _difficulty: 0
-    _description: For those who don't try
-    _progress: 0
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   - _name: 100 Boxes
     _author: "Fran\xE7ois Marques"
     _file: {fileID: 4900000, guid: 8e0a565c2168b462d8cb8289952f6bb9, type: 3}
-    _difficulty: 0
     _description: This collection includes 10 small levels of 10 packages each. It
       is intended for the expert who has a few (many) hours in front of them.
     _progress: 0
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   - _name: 696
     _author: Dries de Clercq
     _file: {fileID: 4900000, guid: b36317eed6aa54ba18c29be0303cd73a, type: 3}
-    _difficulty: 0
     _description: 696 collection by Dries de Clercq
     _progress: 0
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   - _name: GameBoy
     _author: White Rabbit
     _file: {fileID: 4900000, guid: 19fd7211acff64a9eb4da7565465c9d3, type: 3}
-    _difficulty: 0
     _description: 
-    _progress: 1
+    _progress: 0
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   - _name: Bugs 1005
     _author: Buddy Casamis
     _file: {fileID: 4900000, guid: 10a4db34b39e548819eda7d5f02d76b7, type: 3}
-    _difficulty: 0
     _description: Hello to all Sokoban Lovers.I'm an avid player of this mind games.to
       date I have more than 8,000 levels all with solutions.It's like a medicine whenever
       I solve some levels with much difficulty.It took me sometimes, days before I
@@ -69,39 +88,64 @@ MonoBehaviour:
       24 hours a day.I even convert levels from other sokoban games into txt or xsb
       format.Pls specify which format you like to send to you. Thank you.
     _progress: 0
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   - _name: Zone 26
     _author: Dries de Clercq
     _file: {fileID: 4900000, guid: 78576f2ae31aa406f84d52376181f7a6, type: 3}
-    _difficulty: 0
     _description: A huge collection where all levels have a floor size of 26 squares.
       Most of these levels are quite difficult!
     _progress: 0
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   - _name: Spiros
     _author: Spiros Mantzoukis
     _file: {fileID: 4900000, guid: 6f0edc00f96d6404bb958f8b178915fa, type: 3}
-    _difficulty: 0
     _description: Everything falls into place
     _progress: 0
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   - _name: Alberto
     _author: "Alberto Garc\xEDa"
     _file: {fileID: 4900000, guid: 516122e7a8564431f8a51ecedbae128b, type: 3}
-    _difficulty: 0
     _description: 'The multipack contains collections by Alberto Garcia: boxes, Bonus,
       SokoBoxes, The best 4U, Sokomania, Fantasy; with removed duplicates, which were
       already on the site. The levels in this set were collected, documented and published
       by Sokoplaza members. Collection supervisor: Mark (merging of initial collections,
       renaming the new collection, removing duplicates).'
     _progress: 0
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   - _name: Revenge
     _author: Marcus Hof
     _file: {fileID: 4900000, guid: cc3126e431ada466883afce640c54162, type: 3}
-    _difficulty: 0
     _description: The Revenge Collection is totally handmade. All levels have been
       tested and they are all solvable.
     _progress: 0
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   - _name: Haber
     _author: Benjamin Haber
     _file: {fileID: 4900000, guid: f4fdcca2df5834cad9b4f14555a62182, type: 3}
-    _difficulty: 0
     _description: smoke crack
     _progress: 0
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null

@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "Level Set",menuName = "Levels/Level Set Container")]
 public class Levels : ScriptableObject
@@ -32,13 +32,13 @@ public class Set
 	[SerializeField] private string _name;
 	[SerializeField] private string _author;
 	[SerializeField] private TextAsset _file;
-	[SerializeField] private DIFFICULTY _difficulty;
 
 	[SerializeField] private string _description;
 	
 	[SerializeField] private int _progress;
-	
-	private bool _complete;
+
+	[SerializeField] private UnityEvent onComplete;
+
 	private int _size;
 
 	public string Name
@@ -59,8 +59,10 @@ public class Set
 			_progress = value;
 			if (_progress != GetSize()) return;
 			
-			_complete = true;
+			Complete = true;
 			_progress = 0;
+			onComplete.Invoke();
+			Loader.LoadMenu();
 		}
 	}
 
@@ -69,14 +71,11 @@ public class Set
 		Progress++;
 	}
 
-	public bool Complete
-	{
-		get { return _complete; }
-	}
+	public bool Complete { get; private set; }
 
 	public void Reset()
 	{
-		_complete = false;
+		Complete = false;
 		_progress = 0;
 		_size = 0;
 	}
@@ -94,12 +93,4 @@ public class Set
 		string[] split = {"\n\n"};
 		return _file.text.Split(split, StringSplitOptions.RemoveEmptyEntries);
 	}
-}
-
-public enum DIFFICULTY
-{
-	EASY = 0,
-	MEDIUM = 1,
-	HARD = 2,
-	EXTREME = 3
 }
