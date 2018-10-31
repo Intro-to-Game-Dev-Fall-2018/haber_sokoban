@@ -7,12 +7,12 @@ public class LevelUpdateEvent : UnityEvent<LevelData> {}
 
 public class LevelData  
 {
-    public string LevelName;
+    public readonly string LevelName;
     
-    public float width;
-    public float height;
+    public readonly float width;
+    public readonly float height;
 
-    public void init(string[] input)
+    public LevelData(string[] input)
     {
         width = 0;
         height = 0;
@@ -25,6 +25,7 @@ public class LevelData
                 height++;
                 if (line.Length > width)
                     width = line.Length;
-            }
+            } 
     }
+
 }

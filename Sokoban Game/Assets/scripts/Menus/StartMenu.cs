@@ -10,11 +10,11 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private CanvasGroup _levelMenu;
     [SerializeField] private CanvasGroup _instructions;
 
-    [Header("Data")]
-    [SerializeField] private Skins _skins;
+    private Skins _skins;
 
     private void Start()
     {
+        _skins = GameData.Skins;
         _skinText.text = _skins.CurrentSkin().SkinName;
         HideCanvas(_levelMenu);
         HideCanvas(_instructions);

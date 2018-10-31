@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
 	private IEnumerator MoveTimer()
 	{
 		_canMove = false;
-		yield return new WaitForSeconds(GameManager.Instance.Settings.moveTime);
+		yield return new WaitForSeconds(GameData.Settings.moveTime);
 		_canMove = true;
 	}
 	

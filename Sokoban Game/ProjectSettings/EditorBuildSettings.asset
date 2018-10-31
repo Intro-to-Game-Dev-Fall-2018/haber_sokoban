@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/scenes/master.unity
+    path: Assets/scenes/loader.unity
     guid: 9770a60dd3f5c48b7a821bc3e867bd84
   - enabled: 1
     path: Assets/scenes/menu.unity
@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/audio.unity
     guid: e2f275d2e6d4148c49ebd9819de93ea9
+  - enabled: 1
+    path: Assets/scenes/title.unity
+    guid: 140bfe14fab8347f88697e9425388ab9
   m_configObjects: {}

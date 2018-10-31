@@ -19,7 +19,7 @@ namespace UnityEngine.UI.Extensions
     /// 
     /// </summary>
     [AddComponentMenu("UI/Extensions/UI Infinite Scroll")]
-    public class UIInfiniteScroll : MonoBehaviour
+    public class UI_InfiniteScroll : MonoBehaviour
     {
         //if true user will need to call Init() method manually (in case the contend of the scrollview is generated from code or requires special initialization)
         [Tooltip("If false, will Init automatically, otherwise you need to call Init() method")]

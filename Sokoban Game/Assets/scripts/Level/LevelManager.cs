@@ -2,14 +2,24 @@
 
 public class LevelManager : MonoBehaviour
 {
-    [Header("Assets")] 
-    [SerializeField] private Levels _levelsAsset;
-    [SerializeField] private MapLoader _loader;
-
     public static LevelUpdateEvent onLevelUpdate;
     
-    private string[] _levels;
+    [SerializeField] private MapLoader _loader;
+
+    private string[] _levelText;
     private Set _set;
+    
+    private void Awake()
+    {
+        if (onLevelUpdate==null) onLevelUpdate = new LevelUpdateEvent();
+        _set = GameData.Levels.Set;
+        _levelText = _set.GetLevels();
+    }
+
+    private void Start()
+    {
+        LoadLevel(_set.Progress);
+    }
 
     public void ResetLevel()
     {
@@ -32,21 +42,10 @@ public class LevelManager : MonoBehaviour
     private void LoadLevel(int level)
     {
         GameManager.Instance.State.NewLevel();
-        var lines = _levels[level].Split('\n');
+        var lines = _levelText[level].Split('\n');
         var data = _loader.LoadLevel(lines);
         onLevelUpdate.Invoke(data);
     }
 
-    private void Awake()
-    {
-        if (onLevelUpdate==null) onLevelUpdate = new LevelUpdateEvent();
-        
-        _set = _levelsAsset.Set;
-        _levels = _set.GetLevels();
-    }
 
-    private void Start()
-    {
-        LoadLevel(_set.Progress);
-    }
 }

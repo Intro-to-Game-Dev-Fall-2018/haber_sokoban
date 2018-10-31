@@ -2,7 +2,12 @@
 
 public class MapLoader : MonoBehaviour
 {
-    [SerializeField] private Skins _skins;
+    private Skins _skins;
+
+    private void Start()
+    {
+        _skins = GameData.Skins;
+    }
 
     public LevelData LoadLevel(string[] lines)
     {
@@ -12,7 +17,6 @@ public class MapLoader : MonoBehaviour
         var assets = _skins.CurrentSkin();
         var numBoxes = 0;
         var numGoals = 0;
-        var data = new LevelData();
 
         for (var i = 0; i < lines.Length; i++)
         {
@@ -58,7 +62,7 @@ public class MapLoader : MonoBehaviour
         GameManager.Instance.State.goalCount = numGoals;
         GameManager.Instance.State.boxesOnGoals = 0;
 
-        data.init(lines);
+        var data = new LevelData(lines);
         return data;
     }
 }

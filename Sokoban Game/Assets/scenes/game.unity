@@ -341,15 +341,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d665afe1a1fb4ab484856e45fe65430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skins: {fileID: 11400000, guid: c9fb9ac308fa84cd6ac5844ef48d654d, type: 2}
   _menu: {fileID: 1703415940}
   _camera: {fileID: 519420031}
-  _background: {fileID: 1737476592}
   _titles:
   - {fileID: 1711364174}
   - {fileID: 59077468}
   - {fileID: 1013033712}
-  _color: []
+  _bgColor:
+  - {fileID: 1737476592}
+  _textColor: []
 --- !u!1 &237591779
 GameObject:
   m_ObjectHideFlags: 0

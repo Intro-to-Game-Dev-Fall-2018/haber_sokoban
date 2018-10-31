@@ -29,7 +29,7 @@ public class Box : MonoBehaviour
 	
 	private IEnumerator DelayChange()
 	{
-		yield return new WaitForSeconds(GameManager.Instance.Settings.moveTime+.05f);
+		yield return new WaitForSeconds(GameData.Settings.moveTime+.05f);
 		_renderer.sprite = _onGoal;
 	}
 }

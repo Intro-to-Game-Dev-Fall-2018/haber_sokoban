@@ -4,26 +4,29 @@ using UnityEngine.UI.Extensions;
 
 public class LevelMenu : MonoBehaviour
 {
-	
-	[SerializeField] private Levels _levels;
+
+	[SerializeField] private Transform _content;
 	[SerializeField] private GameObject _buttonPrefab;
-	[SerializeField] private UIInfiniteScroll _scroll;
+	[SerializeField] private UI_InfiniteScroll _scroll;
 	
 	private GameObject _first;
+	private Levels _levels;
 
 	private void Awake()
 	{
+		_levels = GameData.Levels;
 		AddButtons();
-		_scroll.Init();
+		if (_scroll!=null) _scroll.Init();
+		if (_content == null) _content = transform;
 	}
 	
 	private void AddButtons()
 	{
 		foreach (var set in _levels.Sets)
 		{
-			var newButton = Instantiate(_buttonPrefab,transform);
+			var newButton = Instantiate(_buttonPrefab,_content);
 			var sampleButton = newButton.GetComponent<LevelSetButton>();
-			sampleButton.Setup(set,_levels);
+			sampleButton.Setup(set);
 			
 			if (_first == null) _first = newButton;
 		}

@@ -8,8 +8,21 @@ public class Loader : MonoBehaviour
 	
 	private void Start ()
 	{
-		SceneManager.LoadSceneAsync("menu", LoadSceneMode.Additive);
+		SceneManager.LoadSceneAsync("title", LoadSceneMode.Additive);
 		SceneManager.LoadSceneAsync("audio", LoadSceneMode.Additive);
+	}
+
+	public static IEnumerator LoadMenuFromTitle()
+	{
+		if (isLoading) yield break;
+		isLoading = true;
+		var operation = SceneManager.LoadSceneAsync("menu", LoadSceneMode.Additive);
+		while (!operation.isDone)
+		{
+			yield return new WaitForEndOfFrame();
+		}
+		SceneManager.UnloadSceneAsync("title");
+		isLoading = false;
 	}
 	
 	public static IEnumerator LoadGame()

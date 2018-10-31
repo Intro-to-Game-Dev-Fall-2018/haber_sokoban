@@ -28,7 +28,7 @@ public class MovingObject : MonoBehaviour
 	private void Start ()
 	{
 		_rb2d = GetComponent<Rigidbody2D>();
-		inverseMoveTime = 1f / GameManager.Instance.Settings.moveTime;
+		inverseMoveTime = 1f / GameData.Settings.moveTime;
 		_moves = new Dictionary<int, Vector2>();
 	}
 

@@ -4,18 +4,18 @@ using UnityEngine.UI;
 
 public class SkinLoader : MonoBehaviour
 {
-    [Header("Skins")] [SerializeField] private Skins _skins;
-
-    [Header("GameObjects")] [SerializeField]
-    private GameObject _menu;
-
-    [SerializeField] private Camera _camera;
-    [SerializeField] private Image _background;
+    [Header("GameObjects")] 
+    
+    [SerializeField] private GameObject _menu;
     [SerializeField] private TextMeshProUGUI[] _titles;
-    [SerializeField] private Image[] _color;
+    [SerializeField] private Image[] _bgColor;
+    [SerializeField] private Image[] _textColor;
 
+    private static Skins _skins;
+    
     private void Start()
     {
+        if (_skins == null) _skins = GameData.Skins;
         _skins.onChangeSkin.AddListener(onChangeSkin);
         onChangeSkin(_skins.CurrentSkin());
     }
@@ -23,14 +23,8 @@ public class SkinLoader : MonoBehaviour
     // ReSharper disable once InvertIf
     private void onChangeSkin(Skin skin)
     {
-
-        
-
-        if (_camera != null)
-            _camera.backgroundColor = skin.Background;
-
-        if (_background != null)
-            _background.color = skin.Background;
+        if (Camera.main != null) 
+            Camera.main.backgroundColor = skin.Background;
 
         if (_menu != null)
         {
@@ -45,12 +39,16 @@ public class SkinLoader : MonoBehaviour
             }
         }
         
-        if (_color != null)
-            foreach (var i in _color)
+        if (_textColor != null)
+            foreach (var i in _textColor)
                 i.color = skin.TextColor;
+        
+        if (_bgColor != null)
+            foreach (var i in _bgColor)
+                i.color = skin.Background;
 
         if (_titles != null)
-            foreach (var title in _titles)
-                title.color = skin.TextColor;
+            foreach (var i in _titles)
+                i.color = skin.TextColor;
     }
 }

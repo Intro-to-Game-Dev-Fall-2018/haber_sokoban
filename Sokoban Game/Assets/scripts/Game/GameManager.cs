@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance;
 	
 	public GameState State;
-	public GameSettings Settings;
 	
 	[SerializeField] private LevelManager _levelManager;
 
@@ -51,7 +50,7 @@ public class GameManager : MonoBehaviour
 	{
 		_active = false;
 		Time.timeScale = 0;
-		yield return new WaitForSecondsRealtime(Settings.waitAfterMap);
+		yield return new WaitForSecondsRealtime(GameData.Settings.waitAfterMap);
 		Time.timeScale = 1;
 		_levelManager.NextLevel();
 		_active = true;
@@ -65,7 +64,7 @@ public class GameManager : MonoBehaviour
 		Instance.State.Undo();
 		foreach (var obj in FindObjectsOfType<MovingObject>())
 			obj.Undo(Instance.State.moves);
-		yield return new WaitForSecondsRealtime(Settings.undoDelay);
+		yield return new WaitForSecondsRealtime(GameData.Settings.undoDelay);
 		_active = true;
 	}
 
