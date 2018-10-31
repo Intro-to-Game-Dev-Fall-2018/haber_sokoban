@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private CanvasGroup _instructions;
     
     private Skins _skins;
+    private bool _showInstructions;
 
     private void Start()
     {
@@ -21,11 +23,8 @@ public class StartMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButton("Cancel"))
+        if (_showInstructions && Input.anyKey)
             MainMenu();
-        
-        if (EventSystem.current.currentSelectedGameObject==null) 
-           EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
     }
 
     //public functions
@@ -37,6 +36,7 @@ public class StartMenu : MonoBehaviour
     
     public void MainMenu()
     {
+        _showInstructions = false;
         HideCanvas(_instructions);
         ShowCanvas(_mainMenu);
         EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
@@ -44,6 +44,7 @@ public class StartMenu : MonoBehaviour
 
     public void ShowInstructions()
     {
+        StartCoroutine(controlMenu());
         HideCanvas(_mainMenu);
         ShowCanvas(_instructions); 
     }
@@ -60,5 +61,11 @@ public class StartMenu : MonoBehaviour
         canvas.alpha = 1f;
         canvas.blocksRaycasts = true;
         canvas.interactable = true;
+    }
+
+    private IEnumerator controlMenu()
+    {
+        yield return new WaitForSecondsRealtime(.5f);
+        _showInstructions = true;
     }
 }
