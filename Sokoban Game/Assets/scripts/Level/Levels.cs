@@ -62,7 +62,6 @@ public class Set
 			Complete = true;
 			_progress = 0;
 			onComplete.Invoke();
-			Loader.LoadMenu();
 		}
 	}
 

@@ -9,6 +9,7 @@ public class LevelTransition : MonoBehaviour
 	[SerializeField] private Image _image;
 
 	private float duration;
+	private IEnumerator current;
 	
 	private void Start ()
 	{
@@ -18,7 +19,7 @@ public class LevelTransition : MonoBehaviour
 	
 	private void Transition(LevelData data)
 	{
-		StopCoroutine(AnimateTransition());
+		StopAllCoroutines();
 		_text.text = data.LevelName;
 		StartCoroutine(AnimateTransition());
 	}
