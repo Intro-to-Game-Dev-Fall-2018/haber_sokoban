@@ -8,6 +8,7 @@ public class LevelMenu : MonoBehaviour
 	[SerializeField] private Transform _content;
 	[SerializeField] private GameObject _buttonPrefab;
 	[SerializeField] private UI_InfiniteScroll _scroll;
+	[SerializeField] private HorizontalScrollSnap _snap;
 	
 	private Levels _levels;
 
@@ -28,6 +29,11 @@ public class LevelMenu : MonoBehaviour
 			sampleButton.Setup(set);
 			
 		}
+	}
+
+	public void SelectCurrent()
+	{
+		Loader.LoadGame();
 	}
 
 }

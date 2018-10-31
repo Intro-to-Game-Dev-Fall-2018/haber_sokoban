@@ -138,6 +138,9 @@ namespace UnityEngine.UI.Extensions
         [Tooltip("(Experimental)\nBy default, child array objects will use the parent transform\nHowever you can disable this for some interesting effects")]
         public bool UseParentTransform = true;
 
+        [Tooltip("Disable buttons when limits reached")]
+        public bool _disableButtons = false;
+        
         [Tooltip("Scroll Snap children. (optional)\nEither place objects in the scene as children OR\nPrefabs in this array, NOT BOTH")]
         public GameObject[] ChildObjects;
 
@@ -430,17 +433,17 @@ namespace UnityEngine.UI.Extensions
         private void ToggleNavigationButtons(int targetScreen)
         {
             //If this is using an Infinite Scroll, then don't disable
-            if (!_isInfinate)
+            if (_isInfinate) return;
+            if (!_disableButtons) return;
+            
+            if (PrevButton)
             {
-                if (PrevButton)
-                {
-                    PrevButton.GetComponent<Button>().interactable = targetScreen > 0;
-                }
+                PrevButton.GetComponent<Button>().interactable = targetScreen > 0;
+            }
 
-                if (NextButton)
-                {
-                    NextButton.GetComponent<Button>().interactable = targetScreen < _screensContainer.transform.childCount - 1;
-                }
+            if (NextButton)
+            {
+                NextButton.GetComponent<Button>().interactable = targetScreen < _screensContainer.transform.childCount - 1;
             }
         }
 

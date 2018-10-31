@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.UI.Extensions;
 
 public class StartMenu : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private Text _skinText;
     [SerializeField] private CanvasGroup _mainMenu;
     [SerializeField] private CanvasGroup _instructions;
-
+    
     private Skins _skins;
 
     private void Start()
@@ -22,6 +23,9 @@ public class StartMenu : MonoBehaviour
     {
         if (Input.GetButton("Cancel"))
             MainMenu();
+        
+        if (EventSystem.current.currentSelectedGameObject==null) 
+           EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
     }
 
     //public functions
