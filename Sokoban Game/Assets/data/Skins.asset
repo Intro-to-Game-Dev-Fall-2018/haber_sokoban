@@ -52,3 +52,11 @@ MonoBehaviour:
     Background: {r: 0, g: 0, b: 0, a: 1}
     TextColor: {r: 1, g: 1, b: 1, a: 1}
     ButtonColor: {r: 0.9176471, g: 0.28627452, b: 0.2627451, a: 1}
+  - SkinName: Mix
+    Box: {fileID: 1543075785234340, guid: 0f29296044c1542bbb2e7e617b1c1f65, type: 2}
+    Goal: {fileID: 1058709425877416, guid: 0f29296044c1542bbb2e7e617b1c1f65, type: 2}
+    Player: {fileID: 1623700914435500, guid: 0475ed57d9ea646a49aae4b53e565353, type: 2}
+    Wall: {fileID: 1516630560665770, guid: 0475ed57d9ea646a49aae4b53e565353, type: 2}
+    Background: {r: 0, g: 0, b: 0, a: 1}
+    TextColor: {r: 0, g: 0.7868831, b: 0.8207547, a: 1}
+    ButtonColor: {r: 0.9176471, g: 0.28627452, b: 0.2627451, a: 1}

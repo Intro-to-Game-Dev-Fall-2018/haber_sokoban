@@ -21,7 +21,7 @@ public class Levels : ScriptableObject
 	public void ResetProgress()
 	{
 		foreach (var s in _sets)
-			s.Reset();
+			s.ResetProgress();
 		resetOnStart = false;
 	}
 }
@@ -72,7 +72,7 @@ public class Set
 
 	public bool Complete { get; private set; }
 
-	public void Reset()
+	public void ResetProgress()
 	{
 		Complete = false;
 		_progress = 0;
