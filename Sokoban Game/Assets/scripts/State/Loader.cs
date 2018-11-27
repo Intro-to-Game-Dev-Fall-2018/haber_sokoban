@@ -8,6 +8,8 @@ public class Loader : MonoBehaviour
 	
 	private void Start ()
 	{
+		Cursor.visible = false;
+		Cursor.lockState = CursorLockMode.Locked;
 		SceneManager.LoadSceneAsync("title", LoadSceneMode.Additive);
 		SceneManager.LoadSceneAsync("audio", LoadSceneMode.Additive);
 	}
@@ -16,7 +18,7 @@ public class Loader : MonoBehaviour
 	{
 		if (isLoading) yield break;
 		isLoading = true;
-		var operation = SceneManager.LoadSceneAsync("menu", LoadSceneMode.Additive);
+		AsyncOperation operation = SceneManager.LoadSceneAsync("menu", LoadSceneMode.Additive);
 		while (!operation.isDone)
 		{
 			yield return new WaitForEndOfFrame();
@@ -29,7 +31,7 @@ public class Loader : MonoBehaviour
 	{
 		if (isLoading) yield break;
 		isLoading = true;
-		var operation = SceneManager.LoadSceneAsync("game", LoadSceneMode.Additive);
+		AsyncOperation operation = SceneManager.LoadSceneAsync("game", LoadSceneMode.Additive);
 		while (!operation.isDone)
 		{
 			yield return new WaitForEndOfFrame();
@@ -42,7 +44,7 @@ public class Loader : MonoBehaviour
 	{
 		if (isLoading) yield break;
 		isLoading = true;
-		var operation = SceneManager.LoadSceneAsync("menu", LoadSceneMode.Additive);
+		AsyncOperation operation = SceneManager.LoadSceneAsync("menu", LoadSceneMode.Additive);
 		while (!operation.isDone)
 		{
 			yield return new WaitForEndOfFrame();

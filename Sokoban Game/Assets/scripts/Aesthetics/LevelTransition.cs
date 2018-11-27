@@ -26,9 +26,9 @@ public class LevelTransition : MonoBehaviour
 
 	private IEnumerator AnimateTransition()
 	{
-		var imageColor = _image.color;
-		var textColor = _text.color;
-		var alpha = 1f;
+		Color imageColor = _image.color;
+		Color textColor = _text.color;
+		float alpha = 1f;
 		
 		textColor.a = alpha;
 		imageColor.a = alpha;
@@ -37,7 +37,7 @@ public class LevelTransition : MonoBehaviour
 		
 		yield return new WaitForSecondsRealtime(GameData.Settings.delayBeforeTransition);
 
-		for (var t = 0.0f; t < 1.0f; t += Time.deltaTime / duration)
+		for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / duration)
 		{
 			alpha =  Mathf.Lerp(alpha, 0, t);
 			imageColor.a = alpha;
