@@ -8,8 +8,8 @@ public class Loader : MonoBehaviour
 	
 	private void Start ()
 	{
-		Cursor.visible = false;
-		Cursor.lockState = CursorLockMode.Locked;
+//		Cursor.visible = false;
+//		Cursor.lockState = CursorLockMode.Locked;
 		SceneManager.LoadSceneAsync("title", LoadSceneMode.Additive);
 		SceneManager.LoadSceneAsync("audio", LoadSceneMode.Additive);
 	}

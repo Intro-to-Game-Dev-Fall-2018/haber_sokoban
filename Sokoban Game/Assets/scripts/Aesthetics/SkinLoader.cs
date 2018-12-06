@@ -11,17 +11,17 @@ public class SkinLoader : MonoBehaviour
     [SerializeField] private Image[] _bgColor;
     [SerializeField] private Image[] _textColor;
 
-    private static Skins _skins;
+//    private static Skins _skins;
     
     private void Start()
     {
-        if (_skins == null) _skins = GameData.Skins;
-        _skins.onChangeSkin.AddListener(onChangeSkin);
-        onChangeSkin(_skins.CurrentSkin());
+//        if (_skins == null) _skins = GameData.Skins;
+        GameData.Skins.onChangeSkin.AddListener(ChangeSkin);
+        ChangeSkin(GameData.Skins.CurrentSkin());
     }
 
     // ReSharper disable once InvertIf
-    private void onChangeSkin(Skin skin)
+    private void ChangeSkin(Skin skin)
     {
         if (Camera.main != null) 
             Camera.main.backgroundColor = skin.Background;

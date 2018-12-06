@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,12 +9,10 @@ public class LevelTransition : MonoBehaviour
 	[SerializeField] private Text _text;
 	[SerializeField] private Image _image;
 
-	private float duration;
 	private IEnumerator current;
 	
 	private void Start ()
 	{
-		duration = GameData.Settings.transitionDuration;
 		LevelManager.onLevelUpdate.AddListener(Transition);
 	}
 	
@@ -28,25 +27,17 @@ public class LevelTransition : MonoBehaviour
 	{
 		Color imageColor = _image.color;
 		Color textColor = _text.color;
-		float alpha = 1f;
 		
-		textColor.a = alpha;
-		imageColor.a = alpha;
+		textColor.a = 1f;
+		imageColor.a = 1f;
 		_image.color = imageColor;
 		_text.color = textColor;
 		
 		yield return new WaitForSecondsRealtime(GameData.Settings.delayBeforeTransition);
 
-		for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / duration)
-		{
-			alpha =  Mathf.Lerp(alpha, 0, t);
-			imageColor.a = alpha;
-			textColor.a = alpha;
-			_image.color = imageColor;
-			_text.color = textColor;
-			yield return null;
-			if (alpha < float.Epsilon) yield break;
-		}
+		_image.DOFade(0, GameData.Settings.transitionDuration).SetEase(Ease.InOutQuart);
+		_text.DOFade(0, GameData.Settings.transitionDuration).SetEase(Ease.InQuart);
+
 	}
 	
 }
