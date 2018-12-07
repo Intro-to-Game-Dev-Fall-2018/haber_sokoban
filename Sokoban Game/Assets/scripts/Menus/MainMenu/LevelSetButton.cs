@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class LevelSetButton : MonoBehaviour {
 
-	public Button buttonComponent;
+	public Button _button;
 	public Text nameLabel;
 	public Text progress;
 	public Text author;
@@ -16,7 +16,7 @@ public class LevelSetButton : MonoBehaviour {
 	private void OnEnable()
 	{
 		_levels = GameData.Levels;
-		buttonComponent.onClick.AddListener(HandleClick);
+		_button.onClick.AddListener(HandleClick);
 	}
 
 	public void Setup(Set set)
@@ -31,7 +31,7 @@ public class LevelSetButton : MonoBehaviour {
 	{
 		_levels.Set = _set;
 		print(_set.Name);
-		StartCoroutine(Loader.LoadGame());
+//		StartCoroutine(Loader.LoadGame());
 	}
 
 }

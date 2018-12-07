@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainMenu2 : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
     [Header("Buttons")] 
     [SerializeField] private Button _startButton;

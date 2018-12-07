@@ -11,11 +11,8 @@ public class SkinLoader : MonoBehaviour
     [SerializeField] private Image[] _bgColor;
     [SerializeField] private Image[] _textColor;
 
-//    private static Skins _skins;
-    
     private void Start()
     {
-//        if (_skins == null) _skins = GameData.Skins;
         GameData.Skins.onChangeSkin.AddListener(ChangeSkin);
         ChangeSkin(GameData.Skins.CurrentSkin());
     }
@@ -28,27 +25,41 @@ public class SkinLoader : MonoBehaviour
 
         if (_menu != null)
         {
-            foreach (var text in _menu.GetComponentsInChildren<Text>())
+            foreach (Text text in _menu.GetComponentsInChildren<Text>())
                 text.color = skin.TextColor;
-            foreach (var g in _menu.GetComponentsInChildren<Button>())
+                
+            foreach (Button button in _menu.GetComponentsInChildren<Button>())
             {
-                var block = g.colors;
-                block.highlightedColor = new Color(.3f,.3f,.3f,1f);
-                g.colors = block;
-                g.gameObject.GetComponent<Graphic>().color = skin.ButtonColor;
+                
+                ColorBlock block = button.colors;
+                Graphic graphic = button.gameObject.GetComponent<Graphic>();
+                Image image = button.gameObject.GetComponent<Image>();
+
+                image.sprite = null;
+
+                block.highlightedColor = Color.gray;
+                block.disabledColor = Color.white;
+                block.normalColor = Color.white;
+                block.pressedColor = Color.gray;
+                block.colorMultiplier = 1;
+                
+                button.colors = block;
+                graphic.color = skin.ButtonColor;
+
+                
             }
         }
         
         if (_textColor != null)
-            foreach (var i in _textColor)
+            foreach (Image i in _textColor)
                 i.color = skin.TextColor;
         
         if (_bgColor != null)
-            foreach (var i in _bgColor)
+            foreach (Image i in _bgColor)
                 i.color = skin.Background;
 
         if (_titles != null)
-            foreach (var i in _titles)
+            foreach (TextMeshProUGUI i in _titles)
                 i.color = skin.TextColor;
     }
 }

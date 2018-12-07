@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bea1ad12050e4e0da5dcf1df3184628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonComponent: {fileID: 114820402668970608}
+  _button: {fileID: 114820402668970608}
   nameLabel: {fileID: 114896849021275336}
   progress: {fileID: 114629925921884244}
   author: {fileID: 114021222068678182}
