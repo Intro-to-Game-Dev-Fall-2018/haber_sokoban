@@ -8,7 +8,7 @@ public class Levels : ScriptableObject
 	[SerializeField] private bool resetOnStart;
 	[SerializeField] private Set[] _sets;
 
-	public Set Set { get; set; }
+	public Set Set;
 
 	private void OnEnable()
 	{
@@ -16,7 +16,13 @@ public class Levels : ScriptableObject
 		Set = _sets[0];
 	}
 
-	public Set[] Sets {get { return _sets;  }}
+	public Set Iterate(int amount)
+	{
+		int next = (Array.IndexOf(_sets,Set) + amount) % _sets.Length;
+		if (next < 0) next = _sets.Length-1;
+		Set = _sets[next];
+		return Set;
+	}
 
 	public void ResetProgress()
 	{
@@ -45,7 +51,12 @@ public class Set
 	{
 		get { return _name; }
 	}
-	
+
+	public string Description
+	{
+		get { return _description; }
+	}
+
 	public string Author
 	{
 		get { return _author; }

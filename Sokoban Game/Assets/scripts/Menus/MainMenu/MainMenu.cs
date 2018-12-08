@@ -1,4 +1,6 @@
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
@@ -34,13 +36,15 @@ public class MainMenu : MonoBehaviour
 
     private void StartGame()
     {
-        StartCoroutine(Loader.LoadGame());
+        _startButton.transform.DOShakePosition(.5f)
+            .OnComplete(()=>StartCoroutine(Loader.LoadGame()));
     }
 
     private void Focus(CanvasGroup group)
     {
         HideAll();
         ShowCanvas(group);
+//        EventSystem.current.SetSelectedGameObject(group.GetComponentInChildren<Button>().gameObject);
     }
 
     private void HideAll()

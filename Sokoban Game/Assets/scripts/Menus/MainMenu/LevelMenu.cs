@@ -1,32 +1,37 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UI.Extensions;
 
 public class LevelMenu : MonoBehaviour
 {
 
-	[SerializeField] private Transform _content;
-	[SerializeField] private GameObject _buttonPrefab;
-//	[SerializeField] private UI_InfiniteScroll _scroll;
+	[SerializeField] private Button _next;
+	[SerializeField] private Button _prev;
 
-	[SerializeField] private Button _backButton;
+	[SerializeField] private TextMeshProUGUI _title;
+	[SerializeField] private TextMeshProUGUI _author;
+	[SerializeField] private TextMeshProUGUI _progress;
+	[SerializeField] private TextMeshProUGUI _description;
+
 	
-	private void Awake()
-	{
-		AddButtons();
-//		if (_scroll!=null) _scroll.Init();
-	}
-	
-	private void AddButtons()
-	{
-		if (_content==null) return;
-		
-		foreach (Set set in GameData.Levels.Sets)
-		{
-			GameObject newButton = Instantiate(_buttonPrefab,_content); 
-			LevelSetButton sampleButton = newButton.GetComponent<LevelSetButton>();
-			sampleButton.Setup(set);
-		}
+	private void Start () {
+		_next.onClick.AddListener(()=>{Iterate(1);});
+		_prev.onClick.AddListener(()=>{Iterate(-1);});
+
+		UpdateInformation(GameData.Levels.Set);
 	}
 
+	private void Iterate(int amount)
+	{
+		Set current = GameData.Levels.Iterate(amount);
+		UpdateInformation(current);
+	}
+
+	private void UpdateInformation(Set set)
+	{
+		_title.text = set.Name;
+		_author.text = "by " + set.Author;
+		_progress.text = set.Complete ? "complete" : set.Progress+" of "+set.GetSize();
+		_description.text = set.Description;
+	}
 }

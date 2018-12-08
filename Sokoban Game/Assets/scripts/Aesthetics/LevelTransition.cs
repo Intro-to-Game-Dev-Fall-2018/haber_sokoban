@@ -9,8 +9,6 @@ public class LevelTransition : MonoBehaviour
 	[SerializeField] private Text _text;
 	[SerializeField] private Image _image;
 
-	private IEnumerator current;
-	
 	private void Start ()
 	{
 		LevelManager.onLevelUpdate.AddListener(Transition);
@@ -35,9 +33,8 @@ public class LevelTransition : MonoBehaviour
 		
 		yield return new WaitForSecondsRealtime(GameData.Settings.delayBeforeTransition);
 
-		_image.DOFade(0, GameData.Settings.transitionDuration).SetEase(Ease.InOutQuart);
-		_text.DOFade(0, GameData.Settings.transitionDuration).SetEase(Ease.InQuart);
-
+		_image.DOFade(0, GameData.Settings.transitionDuration).SetEase(Ease.Linear);
+		_text.DOFade(0, GameData.Settings.transitionDuration).SetEase(Ease.Linear);
 	}
 	
 }
