@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -71,10 +70,3 @@ public class PauseMenu : MonoBehaviour {
 		canvas.interactable = true;
 	}
 }
-
-//	
-//	private static IEnumerator UnPauseDelay()
-//	{
-//		yield return new WaitForSecondsRealtime(.5f);
-//		OnUnPause.Invoke();
-//	}

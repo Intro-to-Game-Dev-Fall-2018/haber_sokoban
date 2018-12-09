@@ -1,12 +1,9 @@
-using DG.Tweening;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     [Header("Buttons")] 
-    [SerializeField] private Button _startButton;
     [SerializeField] private Button _levelSelectButton;
     [SerializeField] private Button _optionsButton;
     [SerializeField] private Button _instructionsButton;
@@ -21,7 +18,6 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        _startButton.onClick.AddListener(StartGame);
         _levelSelectButton.onClick.AddListener(() => Focus(_levelSelectMenu));
         _optionsButton.onClick.AddListener(() => Focus(_optionsMenu));
         _instructionsButton.onClick.AddListener(()=> Focus(_instructions));
@@ -32,19 +28,10 @@ public class MainMenu : MonoBehaviour
         Focus(_mainMenu);
     }
 
-    //Functions
-
-    private void StartGame()
-    {
-        _startButton.transform.DOShakePosition(.5f)
-            .OnComplete(()=>StartCoroutine(Loader.LoadGame()));
-    }
-
     private void Focus(CanvasGroup group)
     {
         HideAll();
         ShowCanvas(group);
-//        EventSystem.current.SetSelectedGameObject(group.GetComponentInChildren<Button>().gameObject);
     }
 
     private void HideAll()
@@ -54,8 +41,6 @@ public class MainMenu : MonoBehaviour
         HideCanvas(_optionsMenu);
         HideCanvas(_instructions);
     }
-
-    //Static Methods
 
     private static void HideCanvas(CanvasGroup canvas)
     {

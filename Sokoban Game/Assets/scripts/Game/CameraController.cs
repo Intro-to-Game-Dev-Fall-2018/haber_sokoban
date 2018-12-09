@@ -13,17 +13,6 @@ public class CameraController : MonoBehaviour
 		LevelManager.onLevelUpdate.AddListener(MoveCamera);
 	}
 
-	private void Update()
-	{
-		if (!GameData.Settings.CameraMovement) return;
-		
-		float x = Input.GetAxis("Vertical");
-		float y = Input.GetAxis("Horizontal");
-		Vector3 dest = new Vector3(y/2, x/2);
-		
-		transform.position = Vector3.MoveTowards(transform.position,_anchor + dest,1f*Time.deltaTime);
-	}
-
 	private void MoveCamera(LevelData data)
 	{
 		_anchor = new Vector3(data.width / 2 -.5f, -data.height/2 +.75f,-10);

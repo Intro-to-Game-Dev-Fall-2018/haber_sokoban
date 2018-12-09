@@ -13,8 +13,4 @@ public class GameSettings : ScriptableObject
 	public float transitionDuration = 1f;
 	public bool ZoomOnLevelChange = true;
 
-	[Header("Effects")] 
-	public bool CameraMovement;
-	
-	
 }
