@@ -30,6 +30,7 @@ public class Levels : ScriptableObject
 			s.ResetProgress();
 		resetOnStart = false;
 	}
+	
 }
 
 [Serializable]
@@ -42,8 +43,6 @@ public class Set
 	[SerializeField] private string _description;
 	
 	[SerializeField] private int _progress;
-
-	[SerializeField] private UnityEvent onComplete;
 
 	private int _size;
 
@@ -72,7 +71,6 @@ public class Set
 			
 			Complete = true;
 			_progress = 0;
-			onComplete.Invoke();
 		}
 	}
 

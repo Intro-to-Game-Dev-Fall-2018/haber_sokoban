@@ -16,3 +16,5 @@ MonoBehaviour:
   undoDelay: 0.4
   delayBeforeTransition: 2
   transitionDuration: 3
+  ZoomOnLevelChange: 1
+  CameraMovement: 1

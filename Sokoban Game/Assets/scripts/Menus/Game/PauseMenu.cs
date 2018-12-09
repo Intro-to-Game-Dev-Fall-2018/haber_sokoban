@@ -2,12 +2,19 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour {
 
+	[Header("Components")]
 	[SerializeField] private CanvasGroup _pauseMenu;
-	[SerializeField] private GameObject _defaultActive;
-	
+	[SerializeField] private LevelManager _levelManager;
+
+	[Header("Buttons")]
+	[SerializeField] private Button _continue;
+	[SerializeField] private Button _reset;
+	[SerializeField] private Button _quit;
+
 	public static UnityEvent OnPause;
 	public static UnityEvent OnUnPause;
 	
@@ -20,32 +27,34 @@ public class PauseMenu : MonoBehaviour {
 	private void Start()
 	{
 		UnPause();
+		_continue.onClick.AddListener(UnPause);
+		_reset.onClick.AddListener(ResetLevel);
+		_quit.onClick.AddListener(() => { StartCoroutine(Loader.LoadMenu());});
 	}
-	
+
 	private void Update ()
 	{
 		if (Input.GetButton("Cancel"))
 			Pause();
+	}
+	
+	private void ResetLevel()
+	{
+		_levelManager.ResetLevel();	
+		UnPause();
 	}
 
 	public void UnPause()
 	{
 		HideCanvas(_pauseMenu);
 		EventSystem.current.SetSelectedGameObject(null);
-		StartCoroutine(UnPauseDelay());
+		OnUnPause.Invoke();
 	}
 
 	public void Pause()
 	{
 		OnPause.Invoke();
 		ShowCanvas(_pauseMenu);
-		EventSystem.current.SetSelectedGameObject(_defaultActive);
-	}
-	
-	private static IEnumerator UnPauseDelay()
-	{
-		yield return new WaitForSecondsRealtime(.5f);
-		OnUnPause.Invoke();
 	}
 
 	private static void HideCanvas(CanvasGroup canvas)
@@ -62,3 +71,10 @@ public class PauseMenu : MonoBehaviour {
 		canvas.interactable = true;
 	}
 }
+
+//	
+//	private static IEnumerator UnPauseDelay()
+//	{
+//		yield return new WaitForSecondsRealtime(.5f);
+//		OnUnPause.Invoke();
+//	}

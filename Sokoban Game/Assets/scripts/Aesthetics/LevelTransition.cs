@@ -16,7 +16,8 @@ public class LevelTransition : MonoBehaviour
 	
 	private void Transition(LevelData data)
 	{
-		StopAllCoroutines();
+		_text.DOComplete();
+		_image.DOComplete();
 		_text.text = data.LevelName;
 		StartCoroutine(AnimateTransition());
 	}

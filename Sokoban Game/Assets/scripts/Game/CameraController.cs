@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
 	private Camera _camera;
+	private Vector3 _anchor;
 	
 	private void Start()
 	{
@@ -14,24 +15,31 @@ public class CameraController : MonoBehaviour
 
 	private void Update()
 	{
-		float vert = Input.GetAxis("Vertical");
-		float hor = Input.GetAxis("Horizontal");
-
-//		_camera.transform.position = _camera.transform.position + new Vector3(hor, vert);
+		if (!GameData.Settings.CameraMovement) return;
+		
+		float x = Input.GetAxis("Vertical");
+		float y = Input.GetAxis("Horizontal");
+		Vector3 dest = new Vector3(y/2, x/2);
+		
+		transform.position = Vector3.MoveTowards(transform.position,_anchor + dest,1f*Time.deltaTime);
 	}
 
 	private void MoveCamera(LevelData data)
 	{
-		Vector3 pos = new Vector3(data.width / 2 -.5f, -data.height/2 +.75f,-10);
+		_anchor = new Vector3(data.width / 2 -.5f, -data.height/2 +.75f,-10);
 		float size = data.height > data.width ? data.height : data.width;
 
-//		_camera.orthographicSize = size/2+1;
-		transform.position = pos;
-		
+		transform.position = _anchor;
 		float dest = size/2+1;
-		_camera.orthographicSize = 100;
 
-		_camera.DOOrthoSize(dest, GameData.Settings.transitionDuration)
-			.SetDelay(GameData.Settings.delayBeforeTransition);
+
+		if (GameData.Settings.ZoomOnLevelChange)
+		{
+			_camera.orthographicSize = 100;
+			_camera.DOOrthoSize(dest, GameData.Settings.transitionDuration)
+				.SetDelay(GameData.Settings.delayBeforeTransition);
+		}
+		else
+			_camera.orthographicSize = dest;
 	}
 }

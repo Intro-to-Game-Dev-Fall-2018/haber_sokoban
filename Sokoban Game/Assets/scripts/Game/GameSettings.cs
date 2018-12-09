@@ -11,4 +11,10 @@ public class GameSettings : ScriptableObject
 	[Header("Scene Transitions")] 
 	public float delayBeforeTransition = 1f;
 	public float transitionDuration = 1f;
+	public bool ZoomOnLevelChange = true;
+
+	[Header("Effects")] 
+	public bool CameraMovement;
+	
+	
 }

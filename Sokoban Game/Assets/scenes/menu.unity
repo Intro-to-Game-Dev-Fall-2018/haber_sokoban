@@ -608,7 +608,6 @@ GameObject:
   - component: {fileID: 259723475}
   - component: {fileID: 259723474}
   - component: {fileID: 259723473}
-  - component: {fileID: 259723476}
   m_Layer: 0
   m_Name: Skins
   m_TagString: Untagged
@@ -722,18 +721,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 259723471}
   m_CullTransparentMesh: 0
---- !u!114 &259723476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 259723471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 022e188e1d90f4461ad80ce88c26f19f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _skinButton: {fileID: 259723473}
 --- !u!1 &314446708
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,7 +775,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a191f58a057474fb0860037d061bf85a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e71c0a37805fe43a79d1f15d706ea3a0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1882,6 +1869,7 @@ GameObject:
   - component: {fileID: 862423280}
   - component: {fileID: 862423279}
   - component: {fileID: 862423278}
+  - component: {fileID: 862423284}
   m_Layer: 0
   m_Name: Options
   m_TagString: Untagged
@@ -2012,6 +2000,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &862423284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 862423276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb42c83df37849e6a67a8723bb864f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skinButton: {fileID: 259723473}
 --- !u!1 &874123112
 GameObject:
   m_ObjectHideFlags: 0

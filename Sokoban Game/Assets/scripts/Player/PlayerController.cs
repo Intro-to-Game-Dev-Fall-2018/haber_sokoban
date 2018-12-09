@@ -9,31 +9,29 @@ public class PlayerController : MonoBehaviour
 	private MovingObject _motor;
 	private bool _canMove;
 	private bool _canUndo;
-	private bool _disabled;
+	private bool _paused;
 
 	private void Start()
 	{
 		_motor = GetComponent<MovingObject>();
-		_canUndo = true;
-		PauseMenu.OnPause.AddListener(Disable);
-		PauseMenu.OnUnPause.AddListener(Enable);
+		PauseMenu.OnPause.AddListener(() => { _paused = true;});
+		PauseMenu.OnUnPause.AddListener(() => { _paused = false;});
 		StartCoroutine(WaitBeforeEnable());
 	}
 
 	private void Update()
 	{
-		if (_disabled) return;
+		if (_paused) return;
 		if (!_canMove) return;
 
-		var x = (int) Input.GetAxis("Horizontal");
-		var y = (int) Input.GetAxis("Vertical");
+		int x = (int) Input.GetAxis("Horizontal");
+		int y = (int) Input.GetAxis("Vertical");
 
 		if (y != 0)
 			x = 0;
 
 		if (x != 0 || y != 0)
 			Move(x,y);
-
 		else if (Input.GetButton("Undo"))
 			Undo();
 	}
@@ -42,8 +40,8 @@ public class PlayerController : MonoBehaviour
 	{
 		if (!_canMove) return;
 		
-		var direction = new Vector2(x,y);
-		var result = _motor.move(direction);
+		Vector2 direction = new Vector2(x,y);
+		MOVE result = _motor.move(direction);
 
 		if (result == MOVE.FAIL )
 			return;
@@ -61,16 +59,6 @@ public class PlayerController : MonoBehaviour
 		GameManager.Instance.Undo();
 		StartCoroutine(MoveTimer());
 	}
-
-	private void Disable()
-	{
-		_disabled = true;
-	}
-	
-	private void Enable()
-	{
-		_disabled = false;
-	}
 	
 	private IEnumerator MoveTimer()
 	{
@@ -84,7 +72,9 @@ public class PlayerController : MonoBehaviour
 
 	private IEnumerator WaitBeforeEnable()
 	{
-		yield return new WaitForSecondsRealtime(GameData.Settings.delayBeforeTransition);
+		float delay = GameData.Settings.delayBeforeTransition + GameData.Settings.transitionDuration;
+		yield return new WaitForSecondsRealtime(delay);
+		_canUndo = true;
 		_canMove = true;
 	}
 	

@@ -40,10 +40,6 @@ public class GameManager : MonoBehaviour
 		StartCoroutine(UndoRoutine());
 	}
 
-	public void loadMenu()
-	{
-		StartCoroutine(Loader.LoadMenu());
-	}
 
 	//Coroutines
 	private IEnumerator PassLevel()
