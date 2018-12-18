@@ -2091,7 +2091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.72156864, g: 0.854902, b: 0.45098042, a: 0}
+  m_Color: {r: 0.72156864, g: 0.854902, b: 0.45098042, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2369,8 +2369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1d60526a80349f78343c676771218a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Skins: {fileID: 11400000, guid: c9fb9ac308fa84cd6ac5844ef48d654d, type: 2}
-  Skins2: {fileID: 11400000, guid: b99cf9690d8754a23bd88f5960d2dbb0, type: 2}
+  Skins: {fileID: 0}
   Levels: {fileID: 11400000, guid: c9387c78197834188bb82d34e94faa87, type: 2}
   Settings: {fileID: 11400000, guid: 0b594b37f520e4693836070fae762824, type: 2}
 --- !u!224 &1031556205
@@ -4168,15 +4167,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _menu: {fileID: 248313085}
-  _titles:
-  - {fileID: 1200241958}
-  - {fileID: 572371734}
-  - {fileID: 442655227}
-  - {fileID: 1507600962}
-  - {fileID: 1394156567}
   _bgColor:
   - {fileID: 821487123}
   - {fileID: 275275444}
+  - {fileID: 821487123}
   _textColor:
   - {fileID: 314446710}
   - {fileID: 696149650}

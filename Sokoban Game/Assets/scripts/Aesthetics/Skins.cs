@@ -53,11 +53,10 @@ public class Skins : ScriptableObject
 		return _skins[current];
 	}
 
-	public GameSkin NextSkin()
+	public void NextSkin()
 	{
 		current = (current + 1) % _skins.Length;
 		onChangeSkin.Invoke(CurrentSkin());
-		return CurrentSkin();
 	}
 
 }

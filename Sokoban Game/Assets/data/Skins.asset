@@ -77,14 +77,64 @@ MonoBehaviour:
       - {fileID: 21300022, guid: 64ec566640cc64ec0935b711d130d90a, type: 3}
   - SkinName: Supreme
     Background: {r: 1, g: 0, b: 0.13899946, a: 1}
-    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    TextColor: {r: 1, g: 1, b: 1, a: 1}
     WorldSprites:
-      Box: {fileID: 0}
-      BoxGoal: {fileID: 0}
-      Goal: {fileID: 0}
-      Wall: {fileID: 0}
+      Box: {fileID: 21300000, guid: 8374f6e67c0454173a0ea4d110aced4d, type: 3}
+      BoxGoal: {fileID: 21300006, guid: 8374f6e67c0454173a0ea4d110aced4d, type: 3}
+      Goal: {fileID: 21300002, guid: 8374f6e67c0454173a0ea4d110aced4d, type: 3}
+      Wall: {fileID: 21300004, guid: 8374f6e67c0454173a0ea4d110aced4d, type: 3}
     PlayerSprites:
-      WalkSide: []
-      PushSide: []
-      WalkTop: []
-      PushTop: []
+      WalkSide:
+      - {fileID: 21300008, guid: 8374f6e67c0454173a0ea4d110aced4d, type: 3}
+      - {fileID: 21300010, guid: 8374f6e67c0454173a0ea4d110aced4d, type: 3}
+      PushSide:
+      - {fileID: 21300012, guid: 8374f6e67c0454173a0ea4d110aced4d, type: 3}
+      - {fileID: 21300014, guid: 8374f6e67c0454173a0ea4d110aced4d, type: 3}
+      WalkTop:
+      - {fileID: 21300016, guid: 8374f6e67c0454173a0ea4d110aced4d, type: 3}
+      - {fileID: 21300018, guid: 8374f6e67c0454173a0ea4d110aced4d, type: 3}
+      PushTop:
+      - {fileID: 21300020, guid: 8374f6e67c0454173a0ea4d110aced4d, type: 3}
+      - {fileID: 21300022, guid: 8374f6e67c0454173a0ea4d110aced4d, type: 3}
+  - SkinName: Santaban
+    Background: {r: 1, g: 1, b: 1, a: 1}
+    TextColor: {r: 0.7924528, g: 0.09344961, b: 0.09344961, a: 1}
+    WorldSprites:
+      Box: {fileID: 21300000, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+      BoxGoal: {fileID: 21300006, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+      Goal: {fileID: 21300002, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+      Wall: {fileID: 21300004, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+    PlayerSprites:
+      WalkSide:
+      - {fileID: 21300008, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+      - {fileID: 21300010, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+      PushSide:
+      - {fileID: 21300012, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+      - {fileID: 21300014, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+      WalkTop:
+      - {fileID: 21300016, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+      - {fileID: 21300018, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+      PushTop:
+      - {fileID: 21300020, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+      - {fileID: 21300022, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+  - SkinName: Santaban
+    Background: {r: 1, g: 1, b: 1, a: 1}
+    TextColor: {r: 0.7924528, g: 0.09344961, b: 0.09344961, a: 1}
+    WorldSprites:
+      Box: {fileID: 21300000, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+      BoxGoal: {fileID: 21300006, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+      Goal: {fileID: 21300002, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+      Wall: {fileID: 21300004, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+    PlayerSprites:
+      WalkSide:
+      - {fileID: 21300008, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+      - {fileID: 21300010, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+      PushSide:
+      - {fileID: 21300012, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+      - {fileID: 21300014, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+      WalkTop:
+      - {fileID: 21300016, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+      - {fileID: 21300018, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+      PushTop:
+      - {fileID: 21300020, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}
+      - {fileID: 21300022, guid: 017eef9c8544e46638acc6c97b4a984e, type: 3}

@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
 		float size = data.height > data.width ? data.height : data.width;
 
 		transform.position = _anchor;
-		float dest = size/2+1;
+		float dest = size/2;
 
 
 		if (GameData.i.Settings.ZoomOnLevelChange)

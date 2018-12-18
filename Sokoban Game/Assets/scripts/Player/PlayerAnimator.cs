@@ -15,6 +15,7 @@ public class PlayerAnimator : MonoBehaviour
 	{
 		_renderer = GetComponent<SpriteRenderer>();
 		_sprites = GameData.i.Skins.CurrentSkin().PlayerSprites;
+		_renderer.sprite = _sprites.WalkSide[0];
 	}
 
 	public void Advance(MOVE status,Vector2 direction)
