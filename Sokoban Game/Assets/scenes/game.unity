@@ -463,10 +463,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _menu: {fileID: 1703415940}
-  _titles:
-  - {fileID: 1711364174}
-  - {fileID: 59077468}
-  - {fileID: 1013033712}
   _bgColor:
   - {fileID: 1737476592}
   - {fileID: 165757327}
@@ -1369,7 +1365,6 @@ GameObject:
   - component: {fileID: 1509039583}
   - component: {fileID: 1509039584}
   - component: {fileID: 1509039582}
-  - component: {fileID: 1509039585}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -1388,7 +1383,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b439542e9bf4f44bc927848cb25443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabLoader: {fileID: 1509039585}
+  Box: {fileID: 114855901672609322, guid: f08f591f55e4644199eb3fb6faa33c74, type: 2}
+  Goal: {fileID: 114493404756360232, guid: 8a76706e6411e4b0580f48270aeb9724, type: 2}
+  Wall: {fileID: 114184479212024634, guid: dbdd95daec21f47e9b1fda1393bf322b, type: 2}
+  Player: {fileID: 114173484955946364, guid: 14c2fdc6f9bb14012964d27f8725345f, type: 2}
 --- !u!4 &1509039583
 Transform:
   m_ObjectHideFlags: 0
@@ -1414,21 +1412,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _loader: {fileID: 1509039582}
---- !u!114 &1509039585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1509039581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a815666aae3174709a0f3271d6626ef5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Box: {fileID: 114855901672609322, guid: f08f591f55e4644199eb3fb6faa33c74, type: 2}
-  Goal: {fileID: 114493404756360232, guid: 8a76706e6411e4b0580f48270aeb9724, type: 2}
-  Wall: {fileID: 1481211414257138, guid: dbdd95daec21f47e9b1fda1393bf322b, type: 2}
-  Player: {fileID: 114862782436643058, guid: 14c2fdc6f9bb14012964d27f8725345f, type: 2}
 --- !u!1 &1684360363
 GameObject:
   m_ObjectHideFlags: 0

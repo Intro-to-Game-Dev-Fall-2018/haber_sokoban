@@ -10,7 +10,7 @@ public class OptionsMenu : MonoBehaviour
     {
         _skinButton.onClick.AddListener(() =>
         {
-            GameData.i.Skins2.NextSkin();
+            GameData.i.Skins.NextSkin();
             Refresh();
         });
         

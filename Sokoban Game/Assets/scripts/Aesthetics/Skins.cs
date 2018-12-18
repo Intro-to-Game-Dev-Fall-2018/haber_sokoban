@@ -2,40 +2,58 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class OnChangeSkin : UnityEvent<Skin> {}
+public class GameSkinChange : UnityEvent<GameSkin> {}
 
 [Serializable]
-public struct Skin
+public struct GameSkin
 {
 	public string SkinName;
-	public GameObject Box;
-	public GameObject Goal;
-	public GameObject Player;
-	public GameObject Wall;
 	public Color Background;
 	public Color TextColor;
-	public Color ButtonColor;
+
+	public WorldSprites WorldSprites;
+	public PlayerSprites PlayerSprites;
 }
 
-[CreateAssetMenu(fileName = "Skin Set", menuName = "Skins/Skin Set")]
+[Serializable]
+public struct WorldSprites
+{
+	public Sprite Box;
+	public Sprite BoxGoal;
+	public Sprite Goal;
+	public Sprite Wall;	
+}
+
+[Serializable]
+public struct PlayerSprites
+{
+	public Sprite[] WalkSide;
+	public Sprite[] PushSide;
+	public Sprite[] WalkTop;
+	public Sprite[] PushTop;
+}
+
+[CreateAssetMenu(fileName = "Skins", menuName = "Skins/Skins")]
 public class Skins : ScriptableObject
 {
-	public OnChangeSkin onChangeSkin;
+	public GameSkinChange onChangeSkin;
 	
-	[SerializeField] private Skin[] _skins;
+	[Header("Skins")]
+	[SerializeField] private GameSkin[] _skins;
+
 	private int current;
 
 	private void OnEnable()
 	{
-		if (onChangeSkin==null) onChangeSkin = new OnChangeSkin();
+		if (onChangeSkin==null) onChangeSkin = new GameSkinChange();
 	}
 
-	public Skin CurrentSkin()
+	public GameSkin CurrentSkin()
 	{
 		return _skins[current];
 	}
 
-	public Skin NextSkin()
+	public GameSkin NextSkin()
 	{
 		current = (current + 1) % _skins.Length;
 		onChangeSkin.Invoke(CurrentSkin());

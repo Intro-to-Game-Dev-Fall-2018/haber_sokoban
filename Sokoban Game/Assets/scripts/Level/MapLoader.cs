@@ -3,8 +3,10 @@
 public class MapLoader : MonoBehaviour
 {
 
-    [SerializeField] 
-    private PrefabLoader _prefabLoader;
+    public Box Box;
+    public Goal Goal;
+    public Wall Wall;
+    public PlayerController Player;
     
     public LevelData LoadLevel(string[] lines)
     {
@@ -23,27 +25,27 @@ public class MapLoader : MonoBehaviour
                 switch (lines[i][j])
                 {
                     case '#':
-                        Instantiate(_prefabLoader.Wall, pos, Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(Wall, pos, Quaternion.identity).transform.SetParent(transform);
                         break;
                     case '@':
-                        Instantiate(_prefabLoader.Player, pos, Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(Player, pos, Quaternion.identity).transform.SetParent(transform);
                         break;
                     case '$':
-                        Instantiate(_prefabLoader.Box, pos, Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(Box, pos, Quaternion.identity).transform.SetParent(transform);
                         numBoxes++;
                         break;
                     case '.':
-                        Instantiate(_prefabLoader.Goal, pos, Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(Goal, pos, Quaternion.identity).transform.SetParent(transform);
                         numGoals++;
                         break;
                     case '+':
-                        Instantiate(_prefabLoader.Player, pos, Quaternion.identity).transform.SetParent(transform);
-                        Instantiate(_prefabLoader.Goal, pos, Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(Player, pos, Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(Goal, pos, Quaternion.identity).transform.SetParent(transform);
                         numGoals++;
                         break;
                     case '*':
-                        Instantiate(_prefabLoader.Box, pos, Quaternion.identity).transform.SetParent(transform);
-                        Instantiate(_prefabLoader.Goal, pos, Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(Box, pos, Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(Goal, pos, Quaternion.identity).transform.SetParent(transform);
                         numBoxes++;
                         numGoals++;
                         break;

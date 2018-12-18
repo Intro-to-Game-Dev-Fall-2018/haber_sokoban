@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
+	private void Awake()
+	{
+		GetComponent<SpriteRenderer>().sprite = GameData.i.Skins.CurrentSkin().WorldSprites.Goal;
+	}
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{

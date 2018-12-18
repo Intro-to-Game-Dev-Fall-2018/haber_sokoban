@@ -3,22 +3,18 @@
 [RequireComponent(typeof(SpriteRenderer))]
 public class PlayerAnimator : MonoBehaviour
 {
-
-	[SerializeField] private Sprite[] _walkSide;
-	[SerializeField] private Sprite[] _pushSide;
-	[SerializeField] private Sprite[] _walkTop;
-	[SerializeField] private Sprite[] _pushTop;
-
 	private int walkSideCur;
 	private int pushSideCur;
 	private int walkTopCur;
 	private int pushTopCur;
 
 	private SpriteRenderer _renderer;
+	private PlayerSprites _sprites;
 	
-	private void Start ()
+	private void Awake ()
 	{
 		_renderer = GetComponent<SpriteRenderer>();
+		_sprites = GameData.i.Skins.CurrentSkin().PlayerSprites;
 	}
 
 	public void Advance(MOVE status,Vector2 direction)
@@ -34,13 +30,13 @@ public class PlayerAnimator : MonoBehaviour
 		if (direction.y != 0)
 		{
 			_renderer.flipX = false;
-			_renderer.sprite = _walkTop[walkTopCur++ % _walkTop.Length];
+			_renderer.sprite = _sprites.WalkTop[walkTopCur++ % _sprites.WalkTop.Length];
 			_renderer.flipY = direction.y > 0;
 		}
 		else
 		{
 			_renderer.flipY = false;
-			_renderer.sprite = _walkSide[ walkSideCur++ % _walkSide.Length];
+			_renderer.sprite = _sprites.WalkSide[ walkSideCur++ % _sprites.WalkSide.Length];
 			_renderer.flipX = direction.x < 0;
 		}
 		
@@ -51,13 +47,13 @@ public class PlayerAnimator : MonoBehaviour
 		if (direction.y != 0)
 		{
 			_renderer.flipX = false;
-			_renderer.sprite = _pushTop[pushTopCur++ % _pushTop.Length];
+			_renderer.sprite = _sprites.PushTop[pushTopCur++ % _sprites.PushTop.Length];
 			_renderer.flipY = direction.y > 0;
 		}
 		else
 		{
 			_renderer.flipY = false;
-			_renderer.sprite = _pushSide[ pushSideCur++ % _pushSide.Length];
+			_renderer.sprite = _sprites.PushSide[ pushSideCur++ % _sprites.PushSide.Length];
 			_renderer.flipX = direction.x < 0;
 		}
 	}

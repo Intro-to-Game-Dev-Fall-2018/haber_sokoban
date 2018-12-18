@@ -153,8 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1d60526a80349f78343c676771218a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Skins: {fileID: 11400000, guid: c9fb9ac308fa84cd6ac5844ef48d654d, type: 2}
-  Skins2: {fileID: 11400000, guid: b99cf9690d8754a23bd88f5960d2dbb0, type: 2}
+  Skins: {fileID: 11400000, guid: b99cf9690d8754a23bd88f5960d2dbb0, type: 2}
   Levels: {fileID: 11400000, guid: c9387c78197834188bb82d34e94faa87, type: 2}
   Settings: {fileID: 11400000, guid: 0b594b37f520e4693836070fae762824, type: 2}
 --- !u!1 &1875954619
