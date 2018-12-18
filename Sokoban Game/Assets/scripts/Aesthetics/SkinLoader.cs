@@ -13,8 +13,8 @@ public class SkinLoader : MonoBehaviour
 
     private void Start()
     {
-        GameData.Skins.onChangeSkin.AddListener(ChangeSkin);
-        ChangeSkin(GameData.Skins.CurrentSkin());
+        GameData.i.Skins.onChangeSkin.AddListener(ChangeSkin);
+        ChangeSkin(GameData.i.Skins.CurrentSkin());
     }
 
     // ReSharper disable once InvertIf
@@ -45,8 +45,6 @@ public class SkinLoader : MonoBehaviour
                 
                 button.colors = block;
                 graphic.color = skin.ButtonColor;
-
-                
             }
         }
         

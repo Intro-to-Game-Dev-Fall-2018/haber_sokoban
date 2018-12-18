@@ -22,11 +22,11 @@ public class CameraController : MonoBehaviour
 		float dest = size/2+1;
 
 
-		if (GameData.Settings.ZoomOnLevelChange)
+		if (GameData.i.Settings.ZoomOnLevelChange)
 		{
 			_camera.orthographicSize = 100;
-			_camera.DOOrthoSize(dest, GameData.Settings.transitionDuration)
-				.SetDelay(GameData.Settings.delayBeforeTransition);
+			_camera.DOOrthoSize(dest, GameData.i.Settings.transitionDuration)
+				.SetDelay(GameData.i.Settings.delayBeforeTransition);
 		}
 		else
 			_camera.orthographicSize = dest;

@@ -17,7 +17,7 @@ public class LevelData
         width = 0;
         height = 0;
         
-        foreach (var line in input)
+        foreach (string line in input)
             if (line.StartsWith(";"))
                 LevelName = line.Replace("; ","");
             else

@@ -10,12 +10,13 @@ public class OptionsMenu : MonoBehaviour
     {
         _skinButton.onClick.AddListener(() =>
         {
-            GameData.Skins.NextSkin();
+            GameData.i.Skins2.NextSkin();
             Refresh();
         });
+        
         _cameraZoomButton.onClick.AddListener(() =>
         {
-            GameData.Settings.ZoomOnLevelChange ^= true;
+            GameData.i.Settings.ZoomOnLevelChange ^= true;
             Refresh();
         });
 
@@ -26,8 +27,8 @@ public class OptionsMenu : MonoBehaviour
     private void Refresh()
     {
         _cameraZoomButton.GetComponentInChildren<Text>().text =
-            GameData.Settings.ZoomOnLevelChange ? "Zoom Camera" : "Static Camera";
+            GameData.i.Settings.ZoomOnLevelChange ? "Zoom Camera" : "Static Camera";
         _skinButton.GetComponentInChildren<Text>().text =
-            "skin: " + GameData.Skins.CurrentSkin().SkinName;
+            "skin: " + GameData.i.Skins.CurrentSkin().SkinName;
     }
 }

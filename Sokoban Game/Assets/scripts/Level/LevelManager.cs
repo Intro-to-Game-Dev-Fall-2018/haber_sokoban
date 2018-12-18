@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         if (onLevelUpdate==null) onLevelUpdate = new LevelUpdateEvent();
-        _set = GameData.Levels.Set;
+        _set = GameData.i.Levels.Set;
         _levelText = _set.GetLevels();
     }
 
@@ -43,7 +43,7 @@ public class LevelManager : MonoBehaviour
     {
         GameManager.Instance.State.NewLevel();
         var lines = _levelText[level].Split('\n');
-        var data = _loader.LoadLevel(lines);
+        LevelData data = _loader.LoadLevel(lines);
         onLevelUpdate.Invoke(data);
     }
 

@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class Box : MonoBehaviour
 {
-
 	private SpriteRenderer _renderer;
-	private Sprite _sprite;
-	[SerializeField] private Sprite _onGoal;
 
 	private void Start()
 	{
 		_renderer = GetComponent<SpriteRenderer>();
-		_sprite = _renderer.sprite;
+		_renderer.sprite = GameData.i.Skins2.CurrentSkin().WorldSprites.Box;
 	}
-	
+
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.CompareTag("Goal"))
@@ -24,12 +21,12 @@ public class Box : MonoBehaviour
 	private void OnTriggerExit2D(Collider2D other)
 	{
 		if (other.gameObject.CompareTag("Goal"))
-			_renderer.sprite = _sprite;
+			_renderer.sprite = GameData.i.Skins2.CurrentSkin().WorldSprites.Box;
 	}
 	
 	private IEnumerator DelayChange()
 	{
-		yield return new WaitForSeconds(GameData.Settings.moveTime+.05f);
-		_renderer.sprite = _onGoal;
+		yield return new WaitForSeconds(GameData.i.Settings.moveTime+.05f);
+		_renderer.sprite = GameData.i.Skins2.CurrentSkin().WorldSprites.BoxGoal;
 	}
 }

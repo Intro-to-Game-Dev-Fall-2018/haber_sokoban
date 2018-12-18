@@ -14,10 +14,10 @@ public class LevelMenu : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI _description;
 	
 	private void Start () {
-		_next.onClick.AddListener(() => {UpdateInformation(GameData.Levels.Iterate(1));});
-		_prev.onClick.AddListener(() => {UpdateInformation(GameData.Levels.Iterate(-1));});
+		_next.onClick.AddListener(() => {UpdateInformation(GameData.i.Levels.Iterate(1));});
+		_prev.onClick.AddListener(() => {UpdateInformation(GameData.i.Levels.Iterate(-1));});
 
-		UpdateInformation(GameData.Levels.Set);
+		UpdateInformation(GameData.i.Levels.Set);
 	}
 	private void UpdateInformation(Set set)
 	{

@@ -2,18 +2,17 @@
 
 public class GameData : MonoBehaviour
 {
-	public static Skins Skins;
-	public static Levels Levels;
-	public static GameSettings Settings;
+
+	public static GameData i;
 	
-	[SerializeField] private Skins _skins;
-	[SerializeField] private Levels _levels;
-	[SerializeField] private GameSettings _settings;
+	public Skins Skins;
+	public Skins2 Skins2;
+	public Levels Levels;
+	public GameSettings Settings;
 
 	private void Awake()
 	{
-		if (Skins == null) Skins = _skins;
-		if (Levels == null) Levels = _levels;
-		if (Settings == null) Settings = _settings;
+		if (i == null) i = this;
+		else Destroy(gameObject);
 	}
 }

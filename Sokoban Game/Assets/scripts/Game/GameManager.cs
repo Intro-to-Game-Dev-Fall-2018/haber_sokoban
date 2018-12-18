@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 	{
 		_active = false;
 		Time.timeScale = 0;
-		yield return new WaitForSecondsRealtime(GameData.Settings.waitAfterMap);
+		yield return new WaitForSecondsRealtime(GameData.i.Settings.waitAfterMap);
 		Time.timeScale = 1;
 		_levelManager.NextLevel();
 		_active = true;
@@ -58,9 +58,9 @@ public class GameManager : MonoBehaviour
 		if (!_active) yield break;
 		_active = false;
 		Instance.State.Undo();
-		foreach (var obj in FindObjectsOfType<MovingObject>())
+		foreach (MovingObject obj in FindObjectsOfType<MovingObject>())
 			obj.Undo(Instance.State.moves);
-		yield return new WaitForSecondsRealtime(GameData.Settings.undoDelay);
+		yield return new WaitForSecondsRealtime(GameData.i.Settings.undoDelay);
 		_active = true;
 	}
 

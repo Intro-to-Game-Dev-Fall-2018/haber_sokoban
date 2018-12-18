@@ -322,7 +322,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77acef05a96f4489d90b24b864289306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onGoal: {fileID: 21300006, guid: f4cf93a62fe694a10b260a8b731758f8, type: 3}
 --- !u!114 &114233865386987214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -352,7 +351,6 @@ MonoBehaviour:
   _boxLayer:
     serializedVersion: 2
     m_Bits: 512
-  _tester: {fileID: 0}
   isPlayer: 0
 --- !u!114 &114583905697738406
 MonoBehaviour:
@@ -382,7 +380,6 @@ MonoBehaviour:
   _boxLayer:
     serializedVersion: 2
     m_Bits: 512
-  _tester: {fileID: 0}
   isPlayer: 1
 --- !u!114 &114855114122004778
 MonoBehaviour:
@@ -488,7 +485,7 @@ SpriteRenderer:
   m_SortingLayerID: -831067825
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300004, guid: f4cf93a62fe694a10b260a8b731758f8, type: 3}
+  m_Sprite: {fileID: 21300002, guid: f4cf93a62fe694a10b260a8b731758f8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

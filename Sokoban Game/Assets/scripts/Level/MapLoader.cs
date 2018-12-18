@@ -2,52 +2,48 @@
 
 public class MapLoader : MonoBehaviour
 {
-    private Skins _skins;
 
-    private void Start()
-    {
-        _skins = GameData.Skins;
-    }
-
+    [SerializeField] 
+    private PrefabLoader _prefabLoader;
+    
     public LevelData LoadLevel(string[] lines)
     {
         foreach (Transform child in transform)
             Destroy(child.gameObject);
 
-        var assets = _skins.CurrentSkin();
-        var numBoxes = 0;
-        var numGoals = 0;
+        int numBoxes = 0;
+        int numGoals = 0;
 
-        for (var i = 0; i < lines.Length; i++)
+        for (int i = 0; i < lines.Length; i++)
         {
             if (lines[i].StartsWith(";")) continue;
-            for (var j = 0; j < lines[i].Length; j++)
+            for (int j = 0; j < lines[i].Length; j++)
             {
-                var pos = new Vector3(j, -i, 0f);
+                Vector3 pos = new Vector3(j, -i, 0f);
                 switch (lines[i][j])
                 {
                     case '#':
-                        Instantiate(assets.Wall, pos, Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(_prefabLoader.Wall, pos, Quaternion.identity).transform.SetParent(transform);
                         break;
                     case '@':
-                        Instantiate(assets.Player, pos, Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(_prefabLoader.Player, pos, Quaternion.identity).transform.SetParent(transform);
                         break;
                     case '$':
-                        Instantiate(assets.Box, pos, Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(_prefabLoader.Box, pos, Quaternion.identity).transform.SetParent(transform);
                         numBoxes++;
                         break;
                     case '.':
-                        Instantiate(assets.Goal, pos, Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(_prefabLoader.Goal, pos, Quaternion.identity).transform.SetParent(transform);
                         numGoals++;
                         break;
                     case '+':
-                        Instantiate(assets.Player, pos, Quaternion.identity).transform.SetParent(transform);
-                        Instantiate(assets.Goal, pos, Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(_prefabLoader.Player, pos, Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(_prefabLoader.Goal, pos, Quaternion.identity).transform.SetParent(transform);
                         numGoals++;
                         break;
                     case '*':
-                        Instantiate(assets.Box, pos, Quaternion.identity).transform.SetParent(transform);
-                        Instantiate(assets.Goal, pos, Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(_prefabLoader.Box, pos, Quaternion.identity).transform.SetParent(transform);
+                        Instantiate(_prefabLoader.Goal, pos, Quaternion.identity).transform.SetParent(transform);
                         numBoxes++;
                         numGoals++;
                         break;
@@ -62,7 +58,7 @@ public class MapLoader : MonoBehaviour
         GameManager.Instance.State.goalCount = numGoals;
         GameManager.Instance.State.boxesOnGoals = 0;
 
-        var data = new LevelData(lines);
+        LevelData data = new LevelData(lines);
         return data;
     }
 }

@@ -32,10 +32,10 @@ public class LevelTransition : MonoBehaviour
 		_image.color = imageColor;
 		_text.color = textColor;
 		
-		yield return new WaitForSecondsRealtime(GameData.Settings.delayBeforeTransition);
+		yield return new WaitForSecondsRealtime(GameData.i.Settings.delayBeforeTransition);
 
-		_image.DOFade(0, GameData.Settings.transitionDuration).SetEase(Ease.Linear);
-		_text.DOFade(0, GameData.Settings.transitionDuration).SetEase(Ease.Linear);
+		_image.DOFade(0, GameData.i.Settings.transitionDuration).SetEase(Ease.Linear);
+		_text.DOFade(0, GameData.i.Settings.transitionDuration).SetEase(Ease.Linear);
 	}
 	
 }

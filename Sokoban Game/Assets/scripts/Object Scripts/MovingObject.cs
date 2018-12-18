@@ -28,7 +28,7 @@ public class MovingObject : MonoBehaviour
 	private void Start ()
 	{
 		_rb2d = GetComponent<Rigidbody2D>();
-		inverseMoveTime = 1f / GameData.Settings.moveTime;
+		inverseMoveTime = 1f / GameData.i.Settings.moveTime;
 		_moves = new Dictionary<int, Vector2>();
 	}
 
@@ -36,7 +36,7 @@ public class MovingObject : MonoBehaviour
 	{
 		if (!_moves.ContainsKey(move)) return;
 		
-		var pos = _moves[move];
+		Vector2 pos = _moves[move];
 		_rb2d.MovePosition(pos);
 		_moves.Remove(move);
 	}
@@ -45,8 +45,8 @@ public class MovingObject : MonoBehaviour
 	{
 		if (_moving) return MOVE.FAIL;
 		
-		var push = false;
-		var newPosition = _rb2d.position + direction;
+		bool push = false;
+		Vector2 newPosition = _rb2d.position + direction;
 		
 		if (wallAt(newPosition)) return MOVE.FAIL;
 		
@@ -67,7 +67,7 @@ public class MovingObject : MonoBehaviour
 
 	private MOVE pushBox(Vector2 newPosition, Vector2 direction)
 	{
-		var box = Physics2D.OverlapPoint(newPosition,_boxLayer).gameObject;
+		GameObject box = Physics2D.OverlapPoint(newPosition,_boxLayer).gameObject;
 		return box.GetComponent<MovingObject>().move(direction);
 	}
 
@@ -85,11 +85,11 @@ public class MovingObject : MonoBehaviour
 	{
 		if (_moving) yield break;
 		_moving = true;
-		var sqrtRemainingDistance = (transform.position - end).sqrMagnitude;
+		float sqrtRemainingDistance = (transform.position - end).sqrMagnitude;
 		
 		while (sqrtRemainingDistance > float.Epsilon)
 		{
-			var newPosition = Vector3.MoveTowards(transform.position, end, inverseMoveTime * Time.deltaTime);
+			Vector3 newPosition = Vector3.MoveTowards(transform.position, end, inverseMoveTime * Time.deltaTime);
 			_rb2d.MovePosition(newPosition);
 			sqrtRemainingDistance = (transform.position - end).sqrMagnitude;
 			yield return null;

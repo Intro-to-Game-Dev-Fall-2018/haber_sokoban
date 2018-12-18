@@ -18,7 +18,7 @@ public class Goal : MonoBehaviour
 
 	private IEnumerator DelayScore()
 	{
-		yield return new WaitForSeconds(GameData.Settings.moveTime+.05f);
+		yield return new WaitForSeconds(GameData.i.Settings.moveTime+.05f);
 		GameManager.Instance.State.boxesOnGoals++;
 	}
 

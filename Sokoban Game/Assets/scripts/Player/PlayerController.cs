@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
 	{
 		_canMove = false;
 		_canUndo = false;
-		yield return new WaitForSeconds(GameData.Settings.moveTime);
+		yield return new WaitForSeconds(GameData.i.Settings.moveTime);
 		_canMove = true;
 		yield return  new WaitForEndOfFrame();
 		_canUndo = true;
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
 	private IEnumerator WaitBeforeEnable()
 	{
-		float delay = GameData.Settings.delayBeforeTransition + GameData.Settings.transitionDuration;
+		float delay = GameData.i.Settings.delayBeforeTransition + GameData.i.Settings.transitionDuration;
 		yield return new WaitForSecondsRealtime(delay);
 		_canUndo = true;
 		_canMove = true;
